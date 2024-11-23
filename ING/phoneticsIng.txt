@@ -1,0 +1,53 @@
+1.cake
+	syllable: keIk
+	vowel sound: eI
+	
+2.lime
+	syllable: laIm
+	vowel sound: aI
+
+3.wine
+	syllable: waIn
+	vowel sound: aI
+
+4.chocolate
+	syllable: tʃɒk - lɪt
+	vowel sound: o - I
+
+5.coffee
+	syllable: kof - fI	
+	vowel sound: o - I
+
+6.snacks 
+	syllable: snæks
+	vowel sound: æ
+
+7.drinks
+	syllable: drIŋks
+	vowel sound: I
+
+8.almonds
+	syllable: æl - mɒnds
+	vowel sound: æ - ɒ
+
+9.chorizo
+	syllable: tʃɔ: - ri: - zɔ:
+	vowel sound: ɔ: - i: - ɔ:
+
+10.vegetables
+	syllable: vedʒ - tɑ: - bəʊ
+	vowel sound: e - ɑ: - əʊ
+
+----------------------------------------------	
+
+Word Sound Match-Up Activity
+
+1. Rithm			9. creation
+2. Poor				10. economic
+3. Our / hour			11. decision
+4. I / eye			12. information
+5. witch / which		13. unhappiness
+6. street			14. jump
+7. three			15. teaching
+8. hand				16. cheating
+
