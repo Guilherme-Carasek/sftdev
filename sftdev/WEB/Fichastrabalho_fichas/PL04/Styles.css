@@ -9,13 +9,14 @@ header{
     text-align: center;
     
 }
-nav{
+
+#navLinks{
     color: white;
 }
 
 footer{
     background: grey;
-    border-radius: 5px;
+    border-radius: 10px;
     border-style: none;
     text-align: center;
     background-color: grey;
