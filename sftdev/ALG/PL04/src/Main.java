@@ -7,13 +7,20 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Bem vindo à caza do sek");
         double deltaSaldo = 0, saldo = 100;
+        System.out.println("Quem está a jogar?");
+        String nomeJogador = in.nextLine();
 
         int opcao = 1;
         do {
             saldo += deltaSaldo;
-            if (saldo < -69) break;
-            System.out.println("Saldo: €" + saldo);
-            System.out.println("Gostaria de perd... erm, jogar hoje nas 1.Loterias(€5) ou 2.Raspadinhas(2€)");
+            System.out.println(nomeJogador+"\nSaldo: €" + saldo);
+            if (saldo < -69) {
+                System.out.println("Seu saldo é baixo demais, por favor insira mais dinheiro");
+                deltaSaldo = AdicionarSaldo();
+                saldo += deltaSaldo;
+                System.out.println(nomeJogador+"\nSaldo: €" + saldo);
+            }
+            System.out.println("Gostaria de perd... erm, jogar hoje nas 1.Loterias(€5), 2.Raspadinhas(2€) ou gostaria de 3.Adicionar Saldo?");
             System.out.println("A opção 'Sair' ainda está em desenvolvimento");
             opcao = in.nextInt();
             switch (opcao) {
@@ -25,14 +32,16 @@ public class Main {
                 case 2:
                     deltaSaldo = RaspadinhaMenu();
                     break;
+                case 3:
+                    deltaSaldo = AdicionarSaldo();
                 default:
                     System.out.println("Saída não é por aí");
             }
-
-
         } while (opcao != 0);
         System.out.println("Oh não, acabou o dinheiro ou a coragem?");
     }
+
+
 
     private static double Loteria() {
         System.out.println("Digite o número em que quer apostar(1000-9999)");
@@ -102,9 +111,51 @@ public class Main {
         System.out.println("Bem vindo à Raspadinha Imbatível. Quantas raspadinhas queres comprar? (€2 cada)");
         int quantidadeRaspadinhas = in.nextInt();
         if (quantidadeRaspadinhas<1) return 0;
+        int premioTotal=0;
         for (int contador=0;contador<quantidadeRaspadinhas;contador++){
-
+            premioTotal-=2;
+            int quantidadeAcertos = 0;
+            int numPrincipal = rnd.nextInt(0,10);
+            int n1 = rnd.nextInt(0,10);
+            int n2 = rnd.nextInt(0,10);
+            int n3 = rnd.nextInt(0,10);
+            int n4 = rnd.nextInt(0,10);
+            int n5 = rnd.nextInt(0,10);
+            int n6 = rnd.nextInt(0,10);
+            int n7 = rnd.nextInt(0,10);
+            int n8 = rnd.nextInt(0,10);
+            int n9 = rnd.nextInt(0,10);
+            double valorPremio = rnd.nextInt(1,11);
+            if (numPrincipal==n1)quantidadeAcertos++;
+            if (numPrincipal==n2)quantidadeAcertos++;
+            if (numPrincipal==n3)quantidadeAcertos++;
+            if (numPrincipal==n4)quantidadeAcertos++;
+            if (numPrincipal==n5)quantidadeAcertos++;
+            if (numPrincipal==n6)quantidadeAcertos++;
+            if (numPrincipal==n7)quantidadeAcertos++;
+            if (numPrincipal==n8)quantidadeAcertos++;
+            if (numPrincipal==n9)quantidadeAcertos++;
+            System.out.println("((("+numPrincipal+"))) "+n1+"\t"+n2+"\t"+n3+"\t"+n4+"\t"+n5+"\t"+n6+"\t"+n7+"\t"+n8+"\t"+n9+"\t");
+            if(quantidadeAcertos<1){
+                System.out.println("Sem sorte! Tente outra vez");
+            }
+            else if(quantidadeAcertos==1||quantidadeAcertos==2){
+                System.out.println("Quase ganhastes! Tente outra vez");
+            }
+            else {
+                premioTotal+=valorPremio;
+                System.out.println("Você ganhou! Seu prêmio é: "+valorPremio);
+            }
         }
-        return -2;
+        return premioTotal;
     }
+
+    private static double AdicionarSaldo() {
+        System.out.println("Quanto deseja adicionar?");
+        double deltaSaldo = in.nextDouble();
+        if (deltaSaldo<0){
+            System.out.println("Não pode adicionar um valor negativo ao seu saldo");
+            return 0;
+        }
+    return deltaSaldo;}
 }
