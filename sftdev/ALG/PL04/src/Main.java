@@ -153,9 +153,9 @@ public class Main {
     private static double AdicionarSaldo() {
         System.out.println("Quanto deseja adicionar?");
         double deltaSaldo = in.nextDouble();
-        if (deltaSaldo<0){
-            System.out.println("Não pode adicionar um valor negativo ao seu saldo");
-            return 0;
+        while (deltaSaldo<0){
+            System.out.println("Por favor adicione um valor positivo ao seu saldo:");
+            deltaSaldo=in.nextDouble();
         }
     return deltaSaldo;}
 }
