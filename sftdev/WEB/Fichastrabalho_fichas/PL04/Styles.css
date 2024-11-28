@@ -1,17 +1,31 @@
 *{
     background-color: bisque;
     margin: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 header{
     text-align: center;
-    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: sticky; top: 0;
 }
 
 #navLinks{
     color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main{
+    font-size:larger;
+    font-family: 'Times New Roman', Times, serif;
+    text-indent: 30px;
+    text-align: justify;
+    letter-spacing: -1px;
+    line-height: 2;
+    word-spacing: 0.9px;
+    text-shadow: 0.2px 0.2px 2px gray;
+    
 }
 
 footer{
@@ -22,6 +36,9 @@ footer{
     background-color: grey;
     padding: 5px;
     margin: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: relative; bottom: 0px;
 }
 h3{
     background-color: grey;
@@ -29,3 +46,5 @@ h3{
 #pfooter{
     background-color: grey;
 }
+
+i+=2
