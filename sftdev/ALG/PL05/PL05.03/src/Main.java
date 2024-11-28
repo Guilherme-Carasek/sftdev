@@ -39,27 +39,28 @@ public class Main {
                 System.out.println("Jogador 1: por favor retire uma quantidade válida de fósforos");
                 deltaFosforos = in.nextInt();
             }
+            while (deltaFosforos==quantidadeFosforos){
+                System.out.println("Jogador 1: jogada inválida - não pode fazer uma jogada que dê a vtória ao adversário. Retire uma quantidade válida de fósforos");
+                deltaFosforos = in.nextInt();
+            }
             quantidadeFosforos -= deltaFosforos;
             if (quantidadeFosforos==1){
                 System.out.println("Jogador 1 ganhou!");
                 return;
             }
-            if (quantidadeFosforos==0){
-                System.out.println("Jogador 2 ganhou!");
-                return;
-            }System.out.println("Fósforos: "+quantidadeFosforos+"\nJogador 2: retire entre 1 e 4 fósforos");
+                System.out.println("Fósforos: "+quantidadeFosforos+"\nJogador 2: retire entre 1 e 4 fósforos");
             deltaFosforos = in.nextInt();
             while (deltaFosforos>quantidadeFosforos||deltaFosforos<1||deltaFosforos>4){
                 System.out.println("Jogador 2: por favor retire uma quantidade válida de fósforos");
                 deltaFosforos = in.nextInt();
             }
+            while (deltaFosforos==quantidadeFosforos){
+                System.out.println("Jogador 2: jogada inválida - não pode fazer uma jogada que dê a vtória ao adversário. Retire uma quantidade válida de fósforos");
+                deltaFosforos = in.nextInt();
+            }
             quantidadeFosforos -= deltaFosforos;
             if (quantidadeFosforos==1){
                 System.out.println("Jogador 2 ganhou!");
-                return;
-            }
-            if (quantidadeFosforos==0){
-                System.out.println("Jogador 1 ganhou!");
                 return;
             }
         }
