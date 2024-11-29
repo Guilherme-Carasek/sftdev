@@ -52,16 +52,19 @@ public class Main {
         int numPremiado = rnd.nextInt(1000, 10000);
         System.out.println("!!!!! O número premiado é "+numPremiado+" !!!!!");
         if ((numAposta%100)==(numPremiado%100)){
-            System.out.println("Muito bom! Acertou os dois últimos números e ganhou €20,00");
-            return 20;
+            int premioA= rnd.nextInt(100,301);
+            System.out.println("Muito bom! Acertou os dois últimos números e ganhou €"+premioA+",00!!");
+            return premioA;
         }
             else if ((numAposta%1000)==(numPremiado%1000)){
-            System.out.println("!!! Parabens! Acertou os três últimos números e ganhaste €500,00");
-            return 500;
+            int premioB= rnd.nextInt(3000,6001);
+            System.out.println("!!! Parabens! Acertou os três últimos números e ganhaste €"+premioB+",00!!!");
+            return premioB;
         }
             else if (numAposta == numPremiado) {
-            System.out.println("!!!!! NÃO ACREDITO! GANHASTE O GRANDE JACKPOT! €10.000,00 !!!!!");
-            return 10000;
+            int premioC= rnd.nextInt(3000,150001);
+            System.out.println("!!!!! NÃO ACREDITO! GANHASTE O GRANDE JACKPOT! €"+premioC+",00 !!!!!");
+            return premioC;
         }
             else {
             System.out.println("não foi desta vez, tente novamente");
