@@ -1,7 +1,9 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     static Scanner in = new Scanner(System.in);
+    static Random rnd = new Random();
 
     public static void main(String[] args) {
         System.out.println("Grupo 1");
@@ -89,8 +91,8 @@ public class Main {
             valoresLista[i] = in.nextInt();
         }
         System.out.println("Ordem inversa:");
-        for (int i = valoresLista.length; i > 0; i--) {
-            System.out.printf(i + "\t");
+        for (int i = valoresLista.length - 1; i >= 0; i--) {
+            System.out.printf(valoresLista[i] + "\t");
         }
     }
 
@@ -120,18 +122,58 @@ public class Main {
         //5. Faça um programa que ordene de forma crescente e decrescente um vetor. Sugere-se pesquisa na internet pelo
         //tópico: “java bubble sort”.
 
-
+        System.out.println("Insira 10 valores desordenados:");
+        int valoresLista[] = new int[10];
+        for (int i = 0; i < valoresLista.length; i++) {
+            System.out.println((i + 1) + ".");
+            valoresLista[i] = in.nextInt();
+        }
+        for (int i = 0; i < (valoresLista.length - 1); i++) {
+            for (int j = (i + 1); j < valoresLista.length; j++) {
+                if (valoresLista[i] > valoresLista[j]) {
+                    int temp = valoresLista[i];
+                    valoresLista[i] = valoresLista[j];
+                    valoresLista[j] = temp;
+                }
+            }
+        }
+        System.out.println("Em ordem crescente:");
+        for (int i = 0; i < valoresLista.length; i++) {
+            System.out.printf(valoresLista[i] + "\t");
+        }
+        for (int i = 0; i < (valoresLista.length - 1); i++) {
+            for (int j = (i + 1); j < valoresLista.length; j++) {
+                if (valoresLista[i] < valoresLista[j]) {
+                    int temp = valoresLista[i];
+                    valoresLista[i] = valoresLista[j];
+                    valoresLista[j] = temp;
+                }
+            }
+        }
+        System.out.println("\nEm ordem decrescente:");
+        for (int i = 0; i < valoresLista.length; i++) {
+            System.out.printf(valoresLista[i] + "\t");
+        }
     }
 
     private static void exercicio6() {
         //6. Faça um programa que peça ao utilizador um conjunto de nomes e os guarda num vetor. De seguida sorteie uma
         //posição do vetor e escreva o nome que está nessa posição.
+        Scanner in = new Scanner(System.in);
+
+        String[] listaNomes = new String[5];
+        System.out.println("Insira " + listaNomes.length + " nomes:");
+        for (int i = 0; i < listaNomes.length; i++) {
+            System.out.println((i + 1) + ".");
+            listaNomes[i] = in.nextLine();
+        }
+        System.out.println("O sorteado é: " + listaNomes[(rnd.nextInt(0, listaNomes.length))]);
     }
 
     private static void exercicio7() {
         //7. Faça um programa que peça ao utilizador um conjunto de nomes. Sempre que o utilizador insere um nome deve
         //inserir num outro vetor a 1ª letra de cada nome. Permita ao utilizador escrever o conteúdo de cada vetor.
-        // Sugerese a utilização de um menu
+        //Sugere-se a utilização de um menu
     }
 
     private static void exercicio8() {
