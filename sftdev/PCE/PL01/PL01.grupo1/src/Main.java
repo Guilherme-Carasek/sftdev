@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Arrays;
 
 public class Main {
     static Scanner in = new Scanner(System.in);
@@ -167,16 +168,86 @@ public class Main {
             System.out.println((i + 1) + ".");
             listaNomes[i] = in.nextLine();
         }
-        System.out.println("O sorteado é: " + listaNomes[(rnd.nextInt(0, listaNomes.length))]);
+        System.out.println("O sorteado é: " + listaNomes[rnd.nextInt(0, listaNomes.length)]);
     }
 
     private static void exercicio7() {
         //7. Faça um programa que peça ao utilizador um conjunto de nomes. Sempre que o utilizador insere um nome deve
         //inserir num outro vetor a 1ª letra de cada nome. Permita ao utilizador escrever o conteúdo de cada vetor.
         //Sugere-se a utilização de um menu
+
+        String[] nomesLista = new String[5];
+        String[] iniciaisLista = new String[nomesLista.length];
+        String iniciais = "";
+        int opcao = 1;
+        while (opcao!=0){
+            System.out.println("1. Inserir nomes");
+            System.out.println("2. Ver lista de nomes");
+            System.out.println("3. Ver lista de iniciais");
+            System.out.println("0. Sair");
+            opcao = in.nextInt();
+            Scanner in = new Scanner(System.in);
+            switch (opcao){
+                case 1:
+                    for (int i = 0; i < nomesLista.length; i++){
+                        System.out.println((i+1)+".");
+                        nomesLista[i] = in.nextLine();
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < nomesLista.length; i++){
+                        System.out.println((i+1)+". "+nomesLista[i]);
+                    }break;
+                case 3:
+                    for (int i = 0; i < nomesLista.length; i++){
+                        iniciais = (iniciais + nomesLista[i].charAt(0));
+                        iniciaisLista[i] = iniciais;
+                        iniciais = "";
+                }
+                    for (int i = 0; i < nomesLista.length; i++){
+                        System.out.println((i+1)+". "+iniciaisLista[i]);
+                    }break;
+                default: break;
+            }
+        }
     }
 
     private static void exercicio8() {
         //8. Altere o exercício anterior ordenando os vetores
+
+        String[] nomesLista = new String[5];
+        String[] iniciaisLista = new String[nomesLista.length];
+        String iniciais = "";
+        int opcao = 1;
+        while (opcao!=0){
+            System.out.println("1. Inserir nomes");
+            System.out.println("2. Ver lista de nomes");
+            System.out.println("3. Ver lista de iniciais");
+            System.out.println("0. Sair");
+            opcao = in.nextInt();
+            Scanner in = new Scanner(System.in);
+            switch (opcao){
+                case 1:
+                    for (int i = 0; i < nomesLista.length; i++){
+                        System.out.println((i+1)+".");
+                        nomesLista[i] = in.nextLine();
+                    }
+                    Arrays.sort(nomesLista, String.CASE_INSENSITIVE_ORDER);
+                    for (int i = 0; i < nomesLista.length; i++){
+                        iniciais  = (iniciais + nomesLista[i].charAt(0));
+                        iniciaisLista[i] = iniciais;
+                        iniciais = "";
+                    }break;
+                case 2:
+                    for (int i = 0; i < nomesLista.length; i++){
+                        System.out.println((i+1)+". "+nomesLista[i]);
+                    }break;
+                case 3:
+                    for (int i = 0; i < nomesLista.length; i++){
+                        System.out.println((i+1)+". "+iniciaisLista[i]);
+                    }break;
+                default: break;
+            }
+        }
     }
 }
