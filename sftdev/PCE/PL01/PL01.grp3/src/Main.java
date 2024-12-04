@@ -25,7 +25,8 @@ public class Main {
             }
         }
     }
-    private static int[] GravarNumeros(){
+    private static int[]
+    GravarNumeros(){
         int[] numerosLista = new int[5];
         for (int i = 0; i < numerosLista.length; i++){
             System.out.println("Insira o "+(i+1)+"º número:");
