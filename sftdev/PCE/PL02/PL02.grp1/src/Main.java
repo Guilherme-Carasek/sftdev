@@ -37,7 +37,7 @@ public class Main {
                 testLinhas += ", ";
             }
         } catch (IOException e) {
-            System.out.println("Erro ao ler o ficheiro");
+            System.out.println(e.getMessage());
         }
         System.out.println(testLinhas);
     }
