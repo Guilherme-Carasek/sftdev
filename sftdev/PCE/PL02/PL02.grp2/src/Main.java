@@ -263,9 +263,6 @@ public class Main {
                         LerDados();
                     case 2:
                         GravarDados();
-                    default:
-                        System.out.println("Opção inválida");
-                        break;
                 }
             }catch (InputMismatchException e){
                 System.out.println(e.getMessage());
@@ -301,7 +298,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
         try{
-            BufferedWriter bwTrab1 = new BufferedWriter(new FileWriter("trabaho1.txt"));
+            BufferedWriter bwTrab1 = new BufferedWriter(new FileWriter("trabalho1.txt"));
             for (int i = 0; i < trabalho1List.size(); i++){
                 bwTrab1.write(String.valueOf(trabalho1List.get(i)));
                 bwTrab1.newLine();
