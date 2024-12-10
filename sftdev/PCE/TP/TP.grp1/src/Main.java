@@ -7,16 +7,21 @@ public class Main {
     static Random rnd = new Random();
 
     public static void main(String[] args) {
-        int opcao = 1;
+        int opcao = -1;
         while (opcao != 0) {
+            Scanner in = new Scanner(System.in);
             System.out.println("1.Simular um sorteio");
             System.out.println("2.Comprar chaves");
             System.out.println("3.Comprar chaves aleatórias");
-            opcao = in.nextInt();
+            System.out.println("4.Simular jogos até ganhar");
+            System.out.println("0.Sair");
+            if (in.hasNextInt()) opcao = in.nextInt();
             if (opcao == 0) return;
             else if (opcao == 1) ImprimirSorteio(SortearChave());
             else if (opcao == 2) CriarBoletim(false);
             else if (opcao == 3) CriarBoletim(true);
+            else if (opcao == 4) SimularPremio();
+            else System.out.println("Opção inválida");
         }
     }
 
@@ -51,7 +56,7 @@ public class Main {
         System.out.println("\n");
     }
 
-    private static void CriarBoletim(Boolean aleatorio){
+    private static int[][] CriarBoletim(Boolean aleatorio){
         System.out.println("Quantas chaves queres comprar?");
         int numeroChaves = 1;
         try {
@@ -163,6 +168,7 @@ public class Main {
         System.out.println();*/
 
         CompararBoletim(boletim);
+        return boletim;
     }
 
     private static void CompararBoletim(int[][] boletim){
@@ -209,5 +215,62 @@ public class Main {
         else System.out.println("Acertou "+numerosAcertados+" números e "+estrelasAcertadas+" estrelhas, não ganhou nenhum prêmio");
 
 
+    }
+
+    private static void SimularPremio(){
+        //reusa a função que retorna uma chave aleatória
+        int[] suaChave = SortearChave();
+        int i = 0;
+        boolean ganhou = false;
+        while (!ganhou){
+            int[] chaveSorteada = SortearChave();
+            int numerosAcertados = 0, estrelasAcertadas = 0;
+            for (int j = 0; j < suaChave.length; j++){
+                if (j < 5){
+                    for (int k = 0; k < 5; k++){
+                        if (suaChave[j] == chaveSorteada[k]) numerosAcertados++;
+                    }
+                }
+                else{
+                    for (int k = 5; k < 7; k++){
+                        if (suaChave[j] == chaveSorteada[k]) estrelasAcertadas++;
+                    }
+                }
+            }
+            i++;
+            if (numerosAcertados==5 && estrelasAcertadas==2) {
+                System.out.println("Jogo #"+i+":");
+                System.out.println("Sua chave:");
+                for (int j = 0; j < suaChave.length; j++){
+                    System.out.print(suaChave[j]+"\t");
+                    if (j==4) System.out.print("||\t");
+                }
+                System.out.println("\nChave premiada:");
+                for (int j = 0; j < chaveSorteada.length; j++){
+                    System.out.print(chaveSorteada[j]+"\t");
+                    if (j==4) System.out.print("||\t");
+                }
+                System.out.println("\nNúmeros acertados: "+numerosAcertados);
+                System.out.println("Estrelhas acertadas: "+estrelasAcertadas);
+                System.out.println("Foi preciso "+i+" tentativas para ganhar!");
+                ganhou = true;
+            }
+            //imprime sua chave, a sorteada e os acertos a cada x tentativas
+            else if (i%10000==0){
+                System.out.println("Jogo #"+i+":");
+                System.out.println("Sua chave:");
+                for (int j = 0; j < suaChave.length; j++){
+                    System.out.print(suaChave[j]+"\t");
+                    if (j==4) System.out.print("||\t");
+                }
+                System.out.println("\nChave premiada:");
+                for (int j = 0; j < chaveSorteada.length; j++){
+                    System.out.print(chaveSorteada[j]+"\t");
+                    if (j==4) System.out.print("||\t");
+                }
+                System.out.println("\nNúmeros acertados: "+numerosAcertados);
+                System.out.println("Estrelhas acertadas: "+estrelasAcertadas);
+            }
+        }
     }
 }
