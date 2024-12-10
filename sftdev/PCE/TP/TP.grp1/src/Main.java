@@ -11,10 +11,12 @@ public class Main {
         while (opcao != 0) {
             System.out.println("1.Simular um sorteio");
             System.out.println("2.Comprar chaves");
+            System.out.println("3.Comprar chaves aleatórias");
             opcao = in.nextInt();
             if (opcao == 0) return;
             else if (opcao == 1) ImprimirSorteio(SortearChave());
-            else if (opcao == 2) CriarBoletim();
+            else if (opcao == 2) CriarBoletim(false);
+            else if (opcao == 3) CriarBoletim(true);
         }
     }
 
@@ -49,8 +51,8 @@ public class Main {
         System.out.println("\n");
     }
 
-    private static void CriarBoletim(){
-        System.out.println("Quantas chaves queres preencher?");
+    private static void CriarBoletim(Boolean aleatorio){
+        System.out.println("Quantas chaves queres comprar?");
         int numeroChaves = 1;
         try {
             numeroChaves = in.nextInt();
@@ -60,60 +62,90 @@ public class Main {
             }
         }catch (InputMismatchException e){
             System.out.println("Escolha um número entre 1 e 5");
-            CriarBoletim();
+            CriarBoletim(aleatorio);
         }
 
         //array [numero de linhas(chaves) desejadas] [5 numeros + 2 estrelas em cada linha]
         int[][] boletim = new int[numeroChaves][7];
-        for (int i = 0; i < boletim.length; i++){
-            for (int j = 0; j < boletim[i].length; j++){
-                System.out.println((i+1)+"ª chave:");
-                if (j < 5) {
-                    System.out.println("Insira o " + (j + 1) + "º número");
-                    try{
-                        boletim[i][j] = in.nextInt();
-                    }catch (InputMismatchException e){
-                        System.out.println(e.getMessage());
-                        j--;
-                    }
-                    while (boletim[i][j] < 1 || boletim[i][j] > 50){
-                        System.out.println("Insira um número entre 1 e 50");
-                        try{
-                            boletim[i][j] = in.nextInt();
-                        }catch (InputMismatchException e){
-                            System.out.println(e.getMessage());
-                            j--;
+
+        if (aleatorio) {
+            for (int i = 0; i < boletim.length; i++) {
+                for (int j = 0; j < boletim[i].length; j++) {
+                    if (j < 5) {
+                        boletim[i][j] = rnd.nextInt(1, 51);
+                        // ciclo for k verifica que não está repetido
+                        for (int k = j; k >= 0; k--) {
+                            if (k != j && boletim[i][k] == boletim[i][j]) j--;
                         }
-                    }
-                    // ciclo for k verifica que não está repetido
-                    for (int k = j; k >= 0; k--){
-                        if (k != j && boletim[i][k] == boletim[i][j]){
-                            System.out.println("Insira um número não repetido");
-                            j--;
+                    } else {
+                        boletim[i][j] = rnd.nextInt(1, 13);
+                        for (int k = j; k >= 5; k--) {
+                            if (k != j && boletim[i][k] == boletim[i][j]) j--;
                         }
                     }
                 }
-                else {
-                    System.out.println("Insira a "+(j-4)+"ª estrelha");
-                    try {
-                        boletim[i][j] = in.nextInt();
-                    }catch (InputMismatchException e){
-                        System.out.println(e.getMessage());
-                        j--;
-                    }
-                    while (boletim[i][j] < 1 || boletim[i][j] > 12){
-                        System.out.println("Insira uma estrelha entre 1 e 12");
-                        try{
+            }
+            //imprime o boletim gerado aleatoriamente
+            System.out.println("boletim:");
+            for (int i = 0; i < boletim.length; i++) {
+                System.out.println();
+                for (int j = 0; j < boletim[i].length; j++) {
+                    System.out.print(boletim[i][j] + "\t");
+                }
+            }
+            System.out.println();
+        }
+
+        else {
+            for (int i = 0; i < boletim.length; i++) {
+                for (int j = 0; j < boletim[i].length; j++) {
+                    System.out.println((i + 1) + "ª chave:");
+                    if (j < 5) {
+                        System.out.println("Insira o " + (j + 1) + "º número");
+                        try {
                             boletim[i][j] = in.nextInt();
-                        }catch (InputMismatchException e){
+                        } catch (InputMismatchException e) {
                             System.out.println(e.getMessage());
                             j--;
                         }
-                    }
-                    for (int k = j; k >= 5; k--){
-                        if (k != j && boletim[i][k] == boletim[i][j]){
-                            System.out.println("Insira uma estrelha não repetida");
+                        while (boletim[i][j] < 1 || boletim[i][j] > 50) {
+                            System.out.println("Insira um número entre 1 e 50");
+                            try {
+                                boletim[i][j] = in.nextInt();
+                            } catch (InputMismatchException e) {
+                                System.out.println(e.getMessage());
+                                j--;
+                            }
+                        }
+                        // ciclo for k verifica que não está repetido
+                        for (int k = j; k >= 0; k--) {
+                            if (k != j && boletim[i][k] == boletim[i][j]) {
+                                System.out.println("Insira um número não repetido");
+                                j--;
+                            }
+                        }
+                    } else {
+                        System.out.println("Insira a " + (j - 4) + "ª estrelha");
+                        try {
+                            boletim[i][j] = in.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println(e.getMessage());
                             j--;
+                        }
+                        while (boletim[i][j] < 1 || boletim[i][j] > 12) {
+                            System.out.println("Insira uma estrelha entre 1 e 12");
+                            try {
+                                boletim[i][j] = in.nextInt();
+                            } catch (InputMismatchException e) {
+                                System.out.println(e.getMessage());
+                                j--;
+                            }
+                        }
+                        for (int k = j; k >= 5; k--) {
+                            if (k != j && boletim[i][k] == boletim[i][j]) {
+                                System.out.println("Insira uma estrelha não repetida");
+                                j--;
+                            }
                         }
                     }
                 }
