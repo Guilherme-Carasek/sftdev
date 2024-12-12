@@ -1,0 +1,27 @@
+function somar(){
+    //Variavel para guardar o valor
+let valorA = parseInt(document.getElementById('inputValorA').value)
+let valorB = parseInt(document.getElementById('inputValorB').value)
+let resultado = valorA + valorB
+//Alerta para mostrar o resultado
+document.getElementById('textoResultado').innerText = "O resulado é " + resultado
+}
+//Divisão 
+//Subtração
+//Multiplicação
+//Operadorfunction tipoOperador(){    
+    //Guardar numa variavel o tipo de operador    
+    let operador = document.getElementById('tipoOperador').value    
+    return operador}
+    function calcular(){    
+        if(tipoOperador() === '+'){        somar();            
+        }
+        }
+
+
+
+
+
+
+
+

@@ -1,7 +1,8 @@
 Maria;15;2
-Filipa;11;4
 Inês;5;0
 Matilde;12;1
 Benedita;9;3
 Duarte;3;0
-Lorrane;0;0
+Andreia;0;0
+Filipa;0;0
+Filipa de Vila Nova de Famalicão;0;0

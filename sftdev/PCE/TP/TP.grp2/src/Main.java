@@ -73,7 +73,12 @@ public class Main {
     private static void AdicionarOuvinte(){
         Scanner in = new Scanner(System.in);
         System.out.println("Qual o nome do novo ouvinte?");
-        nomesLista.add(in.nextLine());
+        String nome = in.nextLine();
+        if (nomesLista.contains(nome)){
+            System.out.println("Nome já existe, insira o nome com algum diferenciador");
+            return;
+        }
+        nomesLista.add(nome);
         jogosJogados.add(0);
         jogosGanhados.add(0);
     }
