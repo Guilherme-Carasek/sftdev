@@ -1,4 +1,4 @@
-function getData() {
+/* function getData() {
     // variables
     const pessoas = []
     const form = document.querySelector(".form")
@@ -48,6 +48,7 @@ function getData() {
  
 getData()
 
+ */
 
 
 
@@ -94,8 +95,7 @@ getData()
 
 
 
-
-/* const nome = document.getElementById("nome")
+const nome = document.getElementById("nome")
 const apelido = document.getElementById("apelido")
 const peso = document.getElementById("peso")
 const altura = document.getElementById("altura")
@@ -143,4 +143,4 @@ function defineActions() {
 }
  
 defineActions()
-  */
+ 
