@@ -1,21 +1,34 @@
+/*  Ciclo do while (array_desafio_1)
+Utilizando o ciclo do … while insere valores até ser introduzido o valor 0 (deverão ser numéricos, caso contrário deverá apresentar uma mensagem de erro).
+No final deverão ser apresentados os seguintes valores:
+Listagem do vetor;
+Máximo e mínimo do vetor;
+Média dos valores introduzidos;
+Número de elementos inseridos.
+ 
+Nota: o valor 0 não deverá ser adicionado ao vetor */
 const prompt = require('prompt-sync')()
 
+const lista = []
+let valor = undefined
 
+do{
+    valor = prompt("valor: ")
+    if (valor == 0)break
+    if (valor != NaN){
+        lista.push(valor)
+    }else console.log("não é número")
+}while (valor != 0)
 
-let opcao = 0
-
-while (opcao != 6){
-    console.log("1.Ler valores")
-    console.log("2.Ver valores")
-    console.log("3.Média")
-    console.log("4.Máximo")
-    console.log("5.Mínimo")
-    console.log("6.Sair")
-    opcao = prompt()
-    console.log(`Clicou na opção ${opcao}`)
-    
-    switch(opcao){
-        case 1: console.log(`Clicou na opção ${opcao}`)
+function soma(vec){
+    resultado = Number(0)
+    for (i in vec){
+        resultado += Number(vec[i])
     }
-
+return resultado
 }
+
+console.log(`vetor: ${lista}`)   
+console.log(`mínimo: ${Math.min(...lista)}`) 
+console.log(`máximo: ${Math.max(...lista)}`) 
+console.log(`média: ${soma(lista)/lista.length}`)
