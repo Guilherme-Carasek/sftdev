@@ -1,8 +1,22 @@
-Maria;15;2
-Inês;5;0
-Matilde;12;1
 Benedita;9;3
-Duarte;3;0
-Andreia;0;0
-Filipa;0;0
-Filipa de Vila Nova de Famalicão;0;0
+Maria;15;2
+Andreia;1;1
+Licínio;1;1
+Matilde;13;1
+Rui;0;0
+Ruben;0;0
+Paula;0;0
+Mauro;0;0
+Marcos;1;0
+Thiago;0;0
+Luis;1;1
+Tiago;0;0
+Ana Filipa;0;0
+Filipe;0;0
+Gonçalo;2;0
+Andreia Filipa;2;0
+Pedro;1;0
+Filipa;1;0
+Lorrane;2;0
+Duarte;4;0
+Inês;6;0
