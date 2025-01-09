@@ -1,0 +1,37 @@
+/* Guilherme Carasek e Andreia Teixeira */ 
+
+main{
+    background-color: antiquewhite;
+    padding-bottom: 0px;
+}
+
+#title{
+    align-items: center;
+    
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: rgb(255, 252, 247);
+    border-radius: 50%;
+    color: #3D6A6E;
+}
+
+.card{
+    border-color: #3D6A6E;
+}
+
+#categoryTitle{
+    font-size: x-large;
+}
+
+body {
+    margin: 0;
+  }
+  
+  main {
+    min-height: calc(100vh);
+  }
+  
+  footer {
+    height: 0;
+  }
+
