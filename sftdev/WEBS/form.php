@@ -19,7 +19,7 @@ $errors = array();
 $firstname = ""; $lastname = ""; $email = ""; $confirmEmail = ""; $password = ""; $passwordConfirm = ""; $birthDate = ""; $phoneNumber = "";
 
 if($_POST != null){
-    print_r($_POST);
+    //print_r($_POST);
     $firstname = $_POST["firstname"];
     if(empty($_POST["firstname"])){
         $errors["firstname"] = "O campo é de preenchimento obrigatório";
@@ -160,19 +160,26 @@ if($_POST != null){
         }
 
     }
+	
+	$postArray = $_POST;
+	unset($postArray["InputPasswordConfirm"], $postArray["InputEmailconfirm"]);
+	$postArray["profilePicture"] = $targetFile;
+	//print_r($postArray);
+
+	$readData = file_get_contents("jsonFiles/userData.json");
+	$readArray = json_decode($readData, true);
+		
+	if ( in_array( $phoneNumber, $readArray["phoneNumber"] )) {
+		$errors["phoneNumber"] = "O número de telefone já existe na base de dados";
+	}
+	if ( in_array( $email, $readArray["inputEmail"] )) {
+		$errors["email"] = "O email já existe na base de dados";
+	}
+	
     if (empty($errors)){
-        $postArray = $_POST;
-        unset($postArray["InputPasswordConfirm"], $postArray["InputEmailconfirm"]);
-        $postArray["profilePicture"] = $targetFile;
-        print_r($postArray);
-
-
-        $readData = file_get_contents("jsonFiles/userData.json");
-        $readArray = json_decode($readData, true);
-
         $readArray[] = $postArray;
         $jsonData = json_encode($readArray);
-        echo($jsonData);    
+        //echo($jsonData);    
         
         $fp = fopen("jsonFiles/userData.json", 'w');
         fwrite($fp, $jsonData);
