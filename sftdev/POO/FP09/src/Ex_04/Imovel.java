@@ -62,6 +62,15 @@ public class Imovel {
         if (areaPiscinaMsqr > 0){
             System.out.println("Piscina: "+this.areaPiscinaMsqr+"Metros quadrados");
         }
+    }
 
+    public Imovel compararImoveis( Imovel aComparar ){
+        if (this.calcularValor() > aComparar.calcularValor()) {
+            return this;
+        }
+        else if ( aComparar.calcularValor() > this.calcularValor() ){
+            return aComparar;
+        }
+        else return null;
     }
 }
