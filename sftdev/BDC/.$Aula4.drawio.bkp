@@ -1,0 +1,25 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.4 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.4">
+  <diagram name="Page-1" id="UHlhTjaeKDUzkuCzgRGK">
+    <mxGraphModel dx="1252" dy="564" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0HD93IoChAsAuMzWpTJq-1" value="Categoria" style="ellipse;whiteSpace=wrap;html=1;align=center;strokeColor=#006658;fontColor=#5C5C5C;fillColor=#21C0A5;" vertex="1" parent="1">
+          <mxGeometry x="136" y="284" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="0HD93IoChAsAuMzWpTJq-2" value="&lt;span data-teams=&quot;true&quot;&gt;Faça um Diagrama E-R e um Modelo de dados para as encomendas online da Pizzaria Ital. A pizzaria pretende guardar os dados das encomendas feitas por cada cliente. Cada encomenda possui vários produtos, cada produto tem uma categoria (exemplo: pizza, refrigerante, etc…) e cada produto pode estar em várias encomendas. Pretende ainda saber que entregador entregou cada encomenda e o pagamento associado a mesma.&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontColor=light-dark(#5C5C5C, #d4e1f5);fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="139.000048828125" y="111.99998779296875" width="550" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="0HD93IoChAsAuMzWpTJq-3" value="Aula 4" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#D4E1F5;fontSize=90;" vertex="1" parent="1">
+          <mxGeometry x="216" y="19" width="396" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="0HD93IoChAsAuMzWpTJq-4" value="Produto" style="whiteSpace=wrap;html=1;align=center;strokeColor=#006658;fontColor=#5C5C5C;fillColor=#21C0A5;" vertex="1" parent="1">
+          <mxGeometry x="173" y="365" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="0HD93IoChAsAuMzWpTJq-5" value="Nome" style="ellipse;whiteSpace=wrap;html=1;align=center;strokeColor=#006658;fontColor=#5C5C5C;fillColor=#21C0A5;" vertex="1" parent="1">
+          <mxGeometry x="44" y="336" width="100" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
