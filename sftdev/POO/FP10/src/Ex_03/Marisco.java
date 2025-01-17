@@ -11,4 +11,15 @@ public class Marisco {
         this.precoEurPorKg = precoEurPorKg;
     }
 
+    public String getEspecie() {
+        return especie;
+    }
+
+    public double getPesoKg() {
+        return pesoKg;
+    }
+
+    public double getPrecoEurPorKg() {
+        return precoEurPorKg;
+    }
 }

@@ -36,6 +36,9 @@ public class MusicPlayer {
         }
     }
 
+    /**
+     * método para imprimir a duração total da programação
+     */
     public void duracao (){
         int soma = 0;
         for ( int i = 0; i < this.programacao.size(); i++ ){

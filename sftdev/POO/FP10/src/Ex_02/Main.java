@@ -6,7 +6,7 @@ public class Main {
         Pessoa pessoa2 = new Pessoa("Sandra", 18, "654651", "gmail");
         Pessoa pessoa3 = new Pessoa("Luis", 28,"9154653", "EEEEEEEmai");
         Pessoa pessoa4 = new Pessoa("Yuri", 31, "9412364", "pisqq@knmaiu.com");
-        Pessoa pessoa5 = new Pessoa("Nome", 99, "numero", "email");
+        Pessoa pessoa5 = new Pessoa("nOME", 99, "numero", "email");
 
         Sorteio rifaCesae = new Sorteio(2000);
         rifaCesae.adicionarParticipante(pessoa1);
