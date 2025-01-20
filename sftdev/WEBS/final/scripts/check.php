@@ -15,7 +15,7 @@ function checkBirthday($date)
 {
 	if ($date == "") {
 		return 'Birthday is required!';
-	} elseif (!checkdate(substr($date, 5, 2), substr($date, 8, 2), substr($date, 0, 4))) {
+	} elseif (!checkdate(substr($date, 5, 2), substr($date, 8, 2), substr($date, 0, 4))) { 
 		return 'Invalid Date!';
 	} elseif ($date > date('Y-m-d', strtotime('-18 years'))) {
 		return 'You must be at least 18 years old!';
