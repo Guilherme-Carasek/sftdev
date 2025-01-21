@@ -1,22 +1,22 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\taskController;
+use App\Http\Controllers\userController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+Route::get('/home', [homeController::class, 'index'])->name('home');
 
-Route::get('/users', function () {
-    return view('users.all_users');
-})->name('users.show');
+Route::get('/users', [userController::class, 'showAllUsers'])->name('users.show');
 
-Route::get('/add-users', function () {
-    return view('users.add_users');
-})->name('users.add');
+Route::get('/add-users', [userController::class, 'addUsers'])->name('users.add');
+
+Route::get('/all-tasks', [taskController::class, 'showAllTasks'])->name('tasks.show');
 
 Route::fallback(function(){
     return view('fallback');
