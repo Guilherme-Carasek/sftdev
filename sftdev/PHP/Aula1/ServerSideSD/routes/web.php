@@ -19,8 +19,8 @@ Route::get('/add-users', function () {
 })->name('users.add');
 
 Route::fallback(function(){
-    return "<a href=".route('home')."><h1>Estás perdido volte aqui</h1></a>";
-});
+    return view('fallback');
+})->name('fallback');
 
 Route::get('/hello/{name}', function ($name) {
     return '<h1>Hello '.$name.'</h1>';
