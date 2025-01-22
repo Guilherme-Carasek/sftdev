@@ -13,5 +13,24 @@
         @endforeach
     </ul>
 
-
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Morada</th>
+            <th scope="col">Email confirmado em</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($allUsers as $user)
+                <tr>
+                    <th scope="row">{{ $user->name }}</th>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->adress }}</td>
+                    <td>{{ $user->email_verified_at }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+      </table>
 @endsection

@@ -55,8 +55,9 @@ public class BarcoPesca {
     public void largarPeixe(int i){
         this.peixesPescados.remove(i);
     }
-    public void largarMarisco(int i){
-        this.mariscosPescados.remove(i);
+    public void largarMarisco(Marisco mariscoRemovido){
+        this.mariscosPescados.remove(mariscoRemovido);
+        System.out.println("Largou "+mariscoRemovido.getEspecie());
     }
 
     public double calcularTotal (){
