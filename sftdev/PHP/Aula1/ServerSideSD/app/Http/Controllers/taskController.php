@@ -3,26 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class taskController extends Controller
 {
     public function showAllTasks(){
         $tasks = $this->getTasks();
-        $availableTasks = $this->getAvailableTasks();
-        return view('tasks.all_tasks', compact('tasks', 'availableTasks'));
+        return view('tasks.all_tasks', compact('tasks'));
     }
 
 
     private function getTasks(){
-        $tasks = [
-        ['name' => 'Rita', 'task' => 'Estudar laravel'],
-        ['name' => 'João', 'task' => 'Estudar Mysql']
-        ];
+        $tasks = DB::table('tasks')->get();
         return $tasks;
-    }
-
-    private function getAvailableTasks() {
-        $availableTasks = [ 'sql', 'js', 'java', 'POO'];
-        return $availableTasks;
     }
 }

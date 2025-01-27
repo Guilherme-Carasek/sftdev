@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class userController extends Controller
 {
     public function showAllUsers() {
         $cesaeInfo = $this->getCesaeInfo();
         $allContacts = $this->getAllContacts();
+        $allUsers = $this->getAllUsers();
 
-        return view('users.all_users', compact('cesaeInfo', 'allContacts'));
+        return view('users.all_users', compact('cesaeInfo', 'allContacts', 'allUsers'));
     }
 
     public function addUsers() {
@@ -33,5 +35,18 @@ class userController extends Controller
             ['id' => '3', 'name' => 'Márcia', 'number' => '911344588']
         ];
         return $contacts;
+    }
+
+    protected function getAllUsers () {
+        $allUsers = DB::table('users')->get();
+        return $allUsers;
+    }
+
+    public function addSara(){
+        DB::table('users')->insert([
+            'name' => 'Sara',
+            'email' => 'sara3@gmail.com',
+            'password' => 'Sara1234!'
+        ]);
     }
 }

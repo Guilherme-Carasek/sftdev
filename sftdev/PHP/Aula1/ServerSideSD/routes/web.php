@@ -18,6 +18,8 @@ Route::get('/add-users', [userController::class, 'addUsers'])->name('users.add')
 
 Route::get('/all-tasks', [taskController::class, 'showAllTasks'])->name('tasks.show');
 
+Route::get('/add-sara', [userController::class, 'addSara'])->name('sara.add');
+
 Route::fallback(function(){
     return view('fallback');
 })->name('fallback');

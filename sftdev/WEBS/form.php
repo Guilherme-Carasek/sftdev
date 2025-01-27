@@ -7,7 +7,7 @@ data nascimento
 telemovel
 -->
 
-<?php
+<?php 
 
 function validateDate($date, $format = 'Y-m-d H:i:s')
 {
@@ -129,7 +129,7 @@ if($_POST != null){
 
         $check = getimagesize($_FILES["profilePicture"]["tmp_name"]);
         if ($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            //echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
             $errors["profilePicture"] = "Ficheiro carregado não é uma imagem";
@@ -168,13 +168,14 @@ if($_POST != null){
 
 	$readData = file_get_contents("jsonFiles/userData.json");
 	$readArray = json_decode($readData, true);
+	print_r($readArray);
 		
-	if ( in_array( $phoneNumber, $readArray["phoneNumber"] )) {
+	/*if ( in_array( $phoneNumber, $readArray["phoneNumber"] )) {
 		$errors["phoneNumber"] = "O número de telefone já existe na base de dados";
 	}
 	if ( in_array( $email, $readArray["inputEmail"] )) {
 		$errors["email"] = "O email já existe na base de dados";
-	}
+	} */
 	
     if (empty($errors)){
         $readArray[] = $postArray;
@@ -238,7 +239,7 @@ if($_POST != null){
             <label for="profilePicture" class="form-label">Foto de perfil</label>
             <input type="file" name="profilePicture" class="form-control" id="profilePicture">
             <?php if (isset($errors["profilePicture"])){ echo $errors["profilePicture"]; } ?>
-        </div>
+    </div>
 
 
   <button type="submit" class="btn btn-primary">Enviar</button>
