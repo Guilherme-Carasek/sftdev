@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\giftController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\taskController;
 use App\Http\Controllers\userController;
@@ -19,6 +20,8 @@ Route::get('/add-users', [userController::class, 'addUsers'])->name('users.add')
 Route::get('/all-tasks', [taskController::class, 'showAllTasks'])->name('tasks.show');
 
 Route::get('/add-sara', [userController::class, 'addSara'])->name('sara.add');
+
+Route::get('/all-gifts', [giftController::class, 'showAllGifts'])->name('gifts.show');
 
 Route::fallback(function(){
     return view('fallback');

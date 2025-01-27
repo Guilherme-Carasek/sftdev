@@ -21,7 +21,7 @@
                 <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">??</a>
+                <a class="nav-link" href=" {{route('gifts.show')}} ">Prendas</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('tasks.show')}}">Tarefas</a>
