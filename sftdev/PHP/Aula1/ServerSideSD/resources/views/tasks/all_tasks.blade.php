@@ -11,6 +11,7 @@
             <th scope="col">Descrição</th>
             <th scope="col">Prazo</th>
             <th scope="col">Concluída</th>
+            <th scope="col">Utilizador</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                         Não
                     @endif
                 </td>
+                <td> {{ $task->userName }} </td>
             </tr>
 
         @endforeach

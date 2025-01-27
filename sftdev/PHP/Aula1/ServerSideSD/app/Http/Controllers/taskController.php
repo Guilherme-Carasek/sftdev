@@ -12,9 +12,12 @@ class taskController extends Controller
         return view('tasks.all_tasks', compact('tasks'));
     }
 
-
-    private function getTasks(){
-        $tasks = DB::table('tasks')->get();
+    protected function getTasks(){
+        $tasks = DB::table('tasks')
+        ->join('users', 'tasks.user_id', '=', 'users.id')
+        ->select('tasks.*', 'users.name as userName')
+        ->get();
+        /* dd($tasks); */
         return $tasks;
     }
 }
