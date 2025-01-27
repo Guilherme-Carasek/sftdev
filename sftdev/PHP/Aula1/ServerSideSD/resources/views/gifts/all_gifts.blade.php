@@ -10,7 +10,7 @@
         <th scope="col">Valor esperado</th>
         <th scope="col">Receberá</th>
         <th scope="col">Valor gasto</th>
-        <th scope="col">Deletar</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -19,7 +19,7 @@
             <th scope="row"> {{ $gift->id }} </th>
             <td> {{ $gift->name }} </td>
             <td> {{ $gift->expectedValue }} </td>
-            <td> {{ $gift->user_id }} </td>
+            <td> {{ $gift->userName }} </td>
             <td> {{ $gift->spentValue }} </td>
             <td> <button type="button" class="btn btn-danger">Deletar</button> </td>
         </tr>

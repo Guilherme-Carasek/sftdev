@@ -14,7 +14,10 @@ class giftController extends Controller
     }
 
     protected function getAllGifts(){
-        $gifts = DB::table('gifts')->get();
+        $gifts = DB::table('gifts')
+        ->join('users', 'users.id', '=', 'gifts.user_id')
+        ->select('gifts.*', 'users.name as userName')
+        ->get();
         return $gifts;
     }
 }
