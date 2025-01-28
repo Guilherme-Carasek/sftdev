@@ -25,9 +25,15 @@ Route::get('/delete-user/{id}', [userController::class, 'deleteUser'])->name('us
 
 Route::get('/all-tasks', [taskController::class, 'showAllTasks'])->name('tasks.show');
 
+Route::get('/show-task/{id}', [taskController::class, 'taskInfo'])->name('task.show');
+
+Route::get('/delete-task/{id}', [taskController::class, 'deleteTask'])->name('task.delete');
+
+Route::get('/complete-task/{id}', [taskController::class, 'completeTask'])->name('task.complete');
+
 Route::get('/add-tasks', [taskController::class, 'addTasks'])->name('tasks.add');
 
-Route::post('/add-task', [userController::class, 'addTask'])->name('task.add');
+Route::post('/add-task', [taskController::class, 'addTask'])->name('task.add');
 
 Route::get('/add-sara', [userController::class, 'addSara'])->name('sara.add');
 

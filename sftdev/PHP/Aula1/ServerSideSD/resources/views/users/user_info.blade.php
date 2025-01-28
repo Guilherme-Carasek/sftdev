@@ -30,10 +30,17 @@
             @if(!is_null($entry->taskId))
             <tr>
                 <th scope="row">Tarefa atribuída</th>
-                <td> {{ $entry->taskName }} </td>
+                <td> {{ $entry->taskName }}
+                    @if ($entry->taskStatus)
+                        <span style="color: green; font-size:20px"> &check; </span>
+                    @else
+                        <span style="color: red; font-size:20px"> &cross; </span>
+                    @endif
+                </td>
                 <td>
-                    <a href="#"><button class="btn btn-info">Ver</button></a>
-                    <a href="#"><button class="btn btn-danger">Apagar</button></a>
+                    <a href=" {{route('task.show', $entry->taskId)}} "><button class="btn btn-info">Ver</button></a>
+                    <a href="{{route('task.complete', $entry->taskId)}}"><button class="btn btn-success"> Feita! </button></a>
+                    <a href="{{route('task.delete', $entry->taskId)}}"><button class="btn btn-danger">Eliminar</button></a>
                 </td>
             </tr>
             @endif
@@ -48,7 +55,7 @@
                 <td> {{ $entry->giftName }} </td>
                 <td>
                     <a href=" {{route('gift.show',$entry->giftId)}} "><button class="btn btn-info">Ver</button></a>
-                    <a href=" # "><button class="btn btn-danger">Apagar</button></a>
+                    <a href=" # "><button class="btn btn-danger">Eliminar</button></a>
                 </td>
             </tr>
             @endif

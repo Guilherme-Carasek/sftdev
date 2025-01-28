@@ -31,7 +31,12 @@
 
                     <div class="mb-3 col-6">
                         <label for="userInput" class="form-label">Responsável</label>
-                        <input type="text" class="form-control" id="userInput" name="userId">
+                        <select class="form-select" name="userId" id="userInput">
+                            <option selected>Utilizador</option>
+                            @foreach ($users as $user)
+                                <option value=" {{$user->id}} "> {{$user->name}} </option>
+                            @endforeach
+                        </select>
                         @error('name')
                             Utilizador inválido
                         @enderror

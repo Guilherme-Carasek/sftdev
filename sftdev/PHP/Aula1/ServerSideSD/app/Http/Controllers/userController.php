@@ -58,7 +58,8 @@ class userController extends Controller
         ->leftJoin('gifts', 'gifts.user_id', 'users.id')
         ->where ('users.id', $id)
         ->select('users.id', 'users.name', 'users.email', 'users.adress',
-        'tasks.id as taskId', 'tasks.name as taskName', 'gifts.id as giftId', 'gifts.name as giftName'/* 'tasks.*', 'gifts.*' */)
+        'tasks.id as taskId', 'tasks.name as taskName', 'tasks.status as taskStatus',
+            'gifts.id as giftId', 'gifts.name as giftName'/* 'tasks.*', 'gifts.*' */)
         ->get();
 
         return view('users.user_info', compact('user'));
