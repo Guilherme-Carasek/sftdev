@@ -20,4 +20,18 @@ class taskController extends Controller
         /* dd($tasks); */
         return $tasks;
     }
+
+    public function addTasks(){
+        return view('tasks.add_tasks');
+    }
+
+    public function addTask(Request $request){
+        $request->validate([
+            'name'=> 'required | String',
+            'description'=> 'nullable | text',
+            'dueDate'=> 'nullable | before_or_equal:now()',
+            'userId'=> 'required'
+        ]);
+
+    }
 }

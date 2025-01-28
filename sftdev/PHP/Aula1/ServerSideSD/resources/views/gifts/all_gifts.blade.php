@@ -21,7 +21,8 @@
             <td> {{ $gift->expectedValue }} </td>
             <td> {{ $gift->userName }} </td>
             <td> {{ $gift->spentValue }} </td>
-            <td> <button type="button" class="btn btn-danger">Deletar</button> </td>
+            <td><a href=" {{route('gift.show',$gift->id)}} "> <button style="margin-right: 12px" type="button" class="btn btn-info">Ver</button></a>
+                <a href=""> <button type="button" class="btn btn-danger">Deletar</button> </a></td>
         </tr>
 @endforeach
 

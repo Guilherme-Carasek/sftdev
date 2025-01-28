@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -48,5 +50,49 @@ class userController extends Controller
             'email' => 'sara3@gmail.com',
             'password' => 'Sara1234!'
         ]);
+    }
+
+    public function showUser($id){
+        $user = DB::table('users')
+        ->leftJoin('tasks', 'tasks.user_id', 'users.id')
+        ->leftJoin('gifts', 'gifts.user_id', 'users.id')
+        ->where ('users.id', $id)
+        ->select('users.id', 'users.name', 'users.email', 'users.adress',
+        'tasks.id as taskId', 'tasks.name as taskName', 'gifts.id as giftId', 'gifts.name as giftName'/* 'tasks.*', 'gifts.*' */)
+        ->get();
+
+        return view('users.user_info', compact('user'));
+    }
+
+    public function deleteUser($id){
+        DB::table('tasks')
+        ->where('user_id', $id)
+        ->delete();
+
+        DB::table('gifts')
+        ->where('user_id', $id)
+        ->delete();
+
+        DB::table('users')
+        ->where('id', $id)
+        ->delete();
+
+        return redirect()->route('users.show')->with('message', 'Utilizador removido com sucesso');
+    }
+
+    public function createUser(Request $request){
+        $request->validate([
+            'name' => 'required | String | min:3',
+            'email' => 'required | email | unique:users',
+            'password' => 'required | min:6'
+        ]);
+
+        User::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        return redirect()->route('users.show')->with('message', 'Utilizador adicionado com sucesso');
     }
 }

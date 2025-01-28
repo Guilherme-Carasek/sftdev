@@ -20,4 +20,15 @@ class giftController extends Controller
         ->get();
         return $gifts;
     }
+
+    public function showGift($id){
+        $gift = DB::table('gifts')
+        ->join('users', 'users.id', '=', 'gifts.user_id')
+        ->where('gifts.id', '=', $id)
+        ->select('gifts.*', 'users.name as userName', 'users.email', 'users.adress')
+        ->first();
+
+
+        return view('gifts.gift_info', compact('gift'));
+    }
 }
