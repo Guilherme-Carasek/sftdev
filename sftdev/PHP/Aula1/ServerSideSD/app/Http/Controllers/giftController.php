@@ -31,4 +31,16 @@ class giftController extends Controller
 
         return view('gifts.gift_info', compact('gift'));
     }
+
+    public function addGifts() {
+        $users = DB::table('users')
+        ->select('users.name', 'users.id')
+        ->get();
+
+        return view('gifts.add_gift', compact('users'));
+    }
+
+    public function addGift (Request $request) {
+        //
+    }
 }

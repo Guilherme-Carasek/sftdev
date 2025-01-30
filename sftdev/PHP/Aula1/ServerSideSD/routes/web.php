@@ -17,6 +17,8 @@ Route::get('/users', [userController::class, 'showAllUsers'])->name('users.show'
 
 Route::get('/user/{id}', [userController::class, 'showUser'])->name('user.show');
 
+Route::get('/add-sara', [userController::class, 'addSara'])->name('sara.add');
+
 Route::get('/add-users', [userController::class, 'addUsers'])->name('users.add');
 
 Route::post('/create-user', [userController::class, 'createUser'])->name('user.create');
@@ -35,11 +37,13 @@ Route::get('/add-tasks', [taskController::class, 'addTasks'])->name('tasks.add')
 
 Route::post('/add-task', [taskController::class, 'addTask'])->name('task.add');
 
-Route::get('/add-sara', [userController::class, 'addSara'])->name('sara.add');
-
 Route::get('/all-gifts', [giftController::class, 'showAllGifts'])->name('gifts.show');
 
 Route::get('/show-gift/{id}', [giftController::class, 'showGift'])->name('gift.show');
+
+Route::get('/add-gifts', [giftController::class, 'addGifts'])->name('gifts.add');
+
+Route::post('/add-gift', [giftController::class, 'addGift'])->name('gift.add');
 
 Route::fallback(function(){
     return view('fallback');

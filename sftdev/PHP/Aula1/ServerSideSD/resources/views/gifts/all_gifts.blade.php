@@ -25,7 +25,9 @@
                 <a href=""> <button type="button" class="btn btn-danger">Deletar</button> </a></td>
         </tr>
 @endforeach
-
+        <tr>
+            <td><a href="{{ route('gifts.add') }}"><button class="btn btn-success">Adicionar prenda</button></a></td>
+        </tr>
     </tbody>
   </table>
 

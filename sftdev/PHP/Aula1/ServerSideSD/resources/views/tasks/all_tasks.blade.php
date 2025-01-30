@@ -10,15 +10,15 @@
 <div class="col-12 col-lg-8">
     <h1>Tarefas</h1>
 
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Tarefa</th>
-            <th scope="col">Prazo</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Responsável</th>
-          </tr>
-        </thead>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tarefa</th>
+                    <th scope="col">Prazo</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Responsável</th>
+                </tr>
+            </thead>
         <tbody>
         @foreach ($tasks as $task)
 
