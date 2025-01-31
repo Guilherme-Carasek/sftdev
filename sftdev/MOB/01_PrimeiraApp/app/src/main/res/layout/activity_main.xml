@@ -11,38 +11,38 @@
         android:id="@+id/button_converterDol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="91dp"
+        android:layout_marginStart="60dp"
         android:text="Converter para dólar"
         app:layout_constraintBottom_toTopOf="@+id/text_resultado"
         app:layout_constraintStart_toStartOf="@+id/edit_valorEur"
         app:layout_constraintTop_toBottomOf="@+id/edit_valorEur"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.525" />
 
     <EditText
         android:id="@+id/edit_valorEur"
-        android:layout_width="237dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="194dp"
+        android:layout_width="312dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="248dp"
         android:ems="10"
         android:inputType="text"
         android:text="Indique o valor em  Eur"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/text_resultado"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48" />
 
     <TextView
         android:id="@+id/text_resultado"
-        android:layout_width="157dp"
+        android:layout_width="283dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="320dp"
+        android:layout_marginBottom="140dp"
         android:text="Resultado"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_valorEur" />
 
