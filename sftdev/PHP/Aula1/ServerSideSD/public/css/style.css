@@ -1,0 +1,67 @@
+body{
+    background-image: url(../images/icicleBg.png);
+    background-size: auto;
+}
+
+nav {
+    background-image: url(../images/greyPixels.png);
+    background-position: center;
+}
+
+#content {
+    background-color: #F5F5F5 ;
+    border-radius: 25px ;
+}
+
+
+.btn{
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    border-color: black !important;
+    border-width: 3px !important;
+}
+.btn:hover{
+    transform: scale(1.1);
+    filter: brightness(200%);
+    transition: 0.15s ease-in-out;
+}
+
+.btn-danger{
+    background: url(../images/redButton.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: aliceblue !important;
+}
+.btn-danger:hover{
+    color: black !important ;
+}
+
+.btn-warning{
+    background: url(../images/purpleButton.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: aliceblue !important;
+}
+.btn-warning:hover{
+    color: black !important ;
+}
+
+.btn-info{
+    background: url(../images/blueButton.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: aliceblue !important;
+}
+.btn-info:hover{
+    color: black !important ;
+}
+
+.btn-success{
+    background: url(../images/greenButton.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black !important;
+}
+.btn-success:hover{
+    color: black !important ;
+}

@@ -36,7 +36,7 @@
                 <td> </td>
                 <td colspan="2">
                     <a href="#"><button class="btn btn-warning">Editar </button></a>
-                    <a href="{{route('task.complete', $task->id)}}"><button class="btn btn-success"> Feito! </button></a>
+                    <a href="{{ route('task.complete', $task->id) }}"><button class="btn btn-success"> Feito! </button></a>
                     <a href=" {{ route('task.delete', $task->id) }} "><button class="btn btn-danger"> Eliminar </button></a>
                 </td>
               </tr>

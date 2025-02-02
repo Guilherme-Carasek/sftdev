@@ -17,8 +17,16 @@ class userController extends Controller
         return view('users.all_users', compact('cesaeInfo', 'allContacts', 'allUsers'));
     }
 
-    public function addUsers() {
-        return view('users.add_users');
+    public function addUsers($id) {
+        if( $id != 0 ){
+            $user = DB::table('users')
+            ->where('users.id', $id)
+            ->select('users.id', 'users.name', 'users.email', 'users.adress')
+            ->first();
+        }
+        else $user = (object) array('id' => 0);
+
+        return view('users.add_users', compact('user'));
     }
 
     private function getCesaeInfo (){
@@ -44,25 +52,23 @@ class userController extends Controller
         return $allUsers;
     }
 
-    public function addSara(){
-        DB::table('users')->insert([
-            'name' => 'Sara',
-            'email' => 'sara3@gmail.com',
-            'password' => 'Sara1234!'
-        ]);
-    }
-
     public function showUser($id){
         $user = DB::table('users')
-        ->leftJoin('tasks', 'tasks.user_id', 'users.id')
-        ->leftJoin('gifts', 'gifts.user_id', 'users.id')
         ->where ('users.id', $id)
-        ->select('users.id', 'users.name', 'users.email', 'users.adress',
-        'tasks.id as taskId', 'tasks.name as taskName', 'tasks.status as taskStatus',
-            'gifts.id as giftId', 'gifts.name as giftName'/* 'tasks.*', 'gifts.*' */)
+        ->select('users.id', 'users.name', 'users.email', 'users.adress')
+        ->first();
+
+        $tasks = DB::table('tasks')
+        ->where( 'tasks.user_id', $id )
+        ->select( 'tasks.id', 'tasks.name', 'tasks.status' )
         ->get();
 
-        return view('users.user_info', compact('user'));
+        $gifts = DB::table( 'gifts' )
+        ->where( 'gifts.user_id', $id )
+        ->select( 'gifts.id', 'gifts.name' )
+        ->get();
+
+        return view('users.user_info', compact('user', 'tasks', 'gifts'));
     }
 
     public function deleteUser($id){
@@ -82,18 +88,37 @@ class userController extends Controller
     }
 
     public function createUser(Request $request){
+
         $request->validate([
             'name' => 'required | String | min:3',
             'email' => 'required | email | unique:users',
-            'password' => 'required | min:6'
+            'adress' => 'nullable'
         ]);
 
-        User::insert([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        if ( !isset($request->id) ) {
+            $request->validate([
+                'password' => 'required | min:6'
+            ]);
 
-        return redirect()->route('users.show')->with('message', 'Utilizador adicionado com sucesso');
+            User::insert([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'adress' => $request->adress
+            ]);
+
+            return redirect()->route('users.show')->with('message', 'Utilizador adicionado com sucesso');
+        }
+        else {
+            DB::table('users')
+            ->where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'adress' => $request->adress
+            ]);
+
+            return redirect()->route('users.show')->with('message', 'Utilizador atualizado com sucesso');
+        }
     }
 }

@@ -19,7 +19,7 @@ Route::get('/user/{id}', [userController::class, 'showUser'])->name('user.show')
 
 Route::get('/add-sara', [userController::class, 'addSara'])->name('sara.add');
 
-Route::get('/add-users', [userController::class, 'addUsers'])->name('users.add');
+Route::get('/add-users/{id}', [userController::class, 'addUsers'])->name('users.add');
 
 Route::post('/create-user', [userController::class, 'createUser'])->name('user.create');
 
@@ -41,7 +41,9 @@ Route::get('/all-gifts', [giftController::class, 'showAllGifts'])->name('gifts.s
 
 Route::get('/show-gift/{id}', [giftController::class, 'showGift'])->name('gift.show');
 
-Route::get('/add-gifts', [giftController::class, 'addGifts'])->name('gifts.add');
+Route::get('/delete-gift/{id}', [giftController::class, 'deleteGift'])->name('gift.delete');
+
+Route::get('/add-gifts/{id}', [giftController::class, 'addGifts'])->name('gifts.add');
 
 Route::post('/add-gift', [giftController::class, 'addGift'])->name('gift.add');
 
