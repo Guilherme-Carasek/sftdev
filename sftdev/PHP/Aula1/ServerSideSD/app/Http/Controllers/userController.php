@@ -91,12 +91,12 @@ class userController extends Controller
 
         $request->validate([
             'name' => 'required | String | min:3',
-            'email' => 'required | email | unique:users',
             'adress' => 'nullable'
         ]);
 
         if ( !isset($request->id) ) {
             $request->validate([
+                'email' => 'required | email | unique:users',
                 'password' => 'required | min:6'
             ]);
 
@@ -111,12 +111,12 @@ class userController extends Controller
         }
         else {
             DB::table('users')
-            ->where('id', $request->id)
-            ->update([
-                'name' => $request->name,
+            ->updateOrInsert(
+                ['id' => $request->id],
+                ['name' => $request->name,
                 'email' => $request->email,
-                'adress' => $request->adress
-            ]);
+                'adress' => $request->adress]
+            );
 
             return redirect()->route('users.show')->with('message', 'Utilizador atualizado com sucesso');
         }
