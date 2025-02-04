@@ -110,13 +110,11 @@ class userController extends Controller
             return redirect()->route('users.show')->with('message', 'Utilizador adicionado com sucesso');
         }
         else {
-            DB::table('users')
-            ->updateOrInsert(
-                ['id' => $request->id],
-                ['name' => $request->name,
-                'email' => $request->email,
-                'adress' => $request->adress]
-            );
+            User::where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'adress' => $request->adress
+            ]);
 
             return redirect()->route('users.show')->with('message', 'Utilizador atualizado com sucesso');
         }

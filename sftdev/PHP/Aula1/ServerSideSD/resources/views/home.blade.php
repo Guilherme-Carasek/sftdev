@@ -1,7 +1,8 @@
 @extends('layouts.main_layout')
 @section('content')
-
-    <h1>Olá {{ $contactInfo['name'] }}, estou em casa</h1>
+    @auth
+        <h1>Olá {{ Auth::user()->name }}, estou em casa</h1>
+    @endauth
     <h2>{{$myVar}} </h2>
     <a href="#"> <img src=" {{ asset('images/linkedinLogo.png')}} " width="30px" alt="imagem"></a>
     <ul>

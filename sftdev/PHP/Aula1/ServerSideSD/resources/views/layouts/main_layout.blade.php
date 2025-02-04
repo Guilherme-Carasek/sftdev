@@ -37,9 +37,50 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
+              <li>
+
+              </li>
             </ul>
+
           </div>
         </div>
+        @if (Route::has('login'))
+                            <nav class="-mx-3 flex flex-1 justify-end">
+                                @auth
+                                    <a
+                                        href="{{ route('dashboard.home') }}"
+                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        <button class="btn btn-warning">Backoffice</button>
+                                    </a>
+                                </nav>
+                                <nav class="-mx-3 flex flex-1 justify-end">
+                                    <form action=" {{ route('logout') }} " method="POST">
+                                        @csrf
+                                        <button class="btn btn-danger">Logout</button>
+                                    </form>
+                                @else
+                                    <a
+                                        href="{{ route('login') }}"
+                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        <button class="btn btn-info">Log in</button>
+                                    </a>
+
+                                    @if (Route::has('register'))
+
+                                </nav>
+                                <nav class="-mx-3 flex flex-1 justify-end">
+                                        <a
+                                            href="{{ route('users.add', 0) }}"
+                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            <button class="btn btn-warning">Register</button>
+                                        </a>
+                                    @endif
+                                @endauth
+                            </nav>
+                        @endif
     </nav>
 
     <div style="padding-inline: 20px">

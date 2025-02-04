@@ -6,6 +6,7 @@ use App\Http\Controllers\giftController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\taskController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\dashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,6 +47,8 @@ Route::get('/delete-gift/{id}', [giftController::class, 'deleteGift'])->name('gi
 Route::get('/add-gifts/{id}', [giftController::class, 'addGifts'])->name('gifts.add');
 
 Route::post('/add-gift', [giftController::class, 'addGift'])->name('gift.add');
+
+Route::get('/dashboard', [dashboardController::class, 'showDashboard'])->name('dashboard.home')->middleware('auth');
 
 Route::fallback(function(){
     return view('fallback');
