@@ -61,4 +61,30 @@ public class Pizza {
         return false;
     }
 
+    public double getKcalTotal(){
+        double kcalTotal = 0;
+        for (IngredientePizza ingredientePizza : this.listaIngredientes){
+            kcalTotal += ingredientePizza.getKcal();
+        }
+        return kcalTotal;
+    }
+
+    public void exibirIngredientes(){
+        int i = 0;
+        for ( IngredientePizza ingredientePizzaAtual : this.listaIngredientes ) {
+            System.out.print("Ingrediente " + i++ + ":");
+            ingredientePizzaAtual.exibirDetalhes();
+            System.out.println();
+        }
+    }
+
+    public void exibirDetalhes() {
+        System.out.println("***** " + this.nome + " *****");
+        System.out.println("Código: " + this.codigo);
+        System.out.println("Descrição: " + this.descricao);
+        System.out.println("Preço: " + this.preco + "€");
+        System.out.println("Tamanho: " + this.tamanho);
+        this.exibirIngredientes();
+        System.out.println("Valor calórico total: " + this.getKcalTotal() + " Kcal");
+    }
 }

@@ -18,4 +18,16 @@ public class Ingrediente {
     public String getCodigo() {
         return codigo;
     }
+
+    public UnidadeMedida getUnidadeMedida() {
+        return this.unidadeMedida;
+    }
+
+    public double getKcalPorUnidade() {
+        return this.kcalPorUnidade;
+    }
+
+    public void exibirDetalhes(){
+        System.out.print("[ " + this.codigo + " | " + this.nome + " | " + this.unidadeMedida + " | " + this.kcalPorUnidade + " Kcal ]" );
+    }
 }
