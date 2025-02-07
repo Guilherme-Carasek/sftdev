@@ -23,17 +23,16 @@ public class Vendor {
     }
 
     /**
-     * greets hero
-     * @return string
+     * Greets hero.
+     * @return String
      */
     public String greet() {
         return "Oh Traveler! Need anything?";
     }
 
     /**
-     * returns dialogue when the player chooses to talk
-     *
-     * @return
+     * Returns dialogue when the player chooses to talk.
+     * @return String
      */
     public String talk(int counter) {
         switch (counter) {

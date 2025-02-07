@@ -9,7 +9,15 @@ public abstract class HeroItem {
         this.step = step;
     }
 
-    protected abstract void scale ();
+    /**
+     * Scales the item's value and adds a tag according to the step
+     */
+    protected void scale () {
+        if (this.step > 0) {
+            this.name += " +" + Integer.toString(this.step);
+            this.value += 2 * this.step;
+        }
+    };
 
     public int getValue() {
         return value;

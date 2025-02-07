@@ -12,11 +12,9 @@ public abstract class Armor extends HeroItem {
 
     @Override
     protected void scale() {
-        if (this.step > 0){
-            this.name += " +" + Integer.toString(this.step);
-            this.value += 2 * this.step;
-            this.bonusHp += 2 * this.step;
-            this.bonusAgility += 2 * this.step;
-        }
+        super.scale();
+        this.bonusHp += 2 * this.step;
+        this.bonusAgility += 2 * this.step;
+
     }
 }

@@ -10,11 +10,9 @@ public abstract class Weapon extends HeroItem {
 
     @Override
     protected void scale() {
-        if (this.step > 0){
-            this.name += " +" + Integer.toString(this.step);
-            this.value += 2 * this.step;
-            this.strength += 2 * this.step;
-        }
+        super.scale();
+        this.strength += 2 * this.step;
+
     }
 
     //método para ataque básico
