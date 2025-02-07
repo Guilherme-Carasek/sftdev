@@ -1,6 +1,10 @@
 package Entities.Heros;
 
 import Entities.Entity;
+import Itens.Equipable.BodyArmor.BodyArmor;
+import Itens.Equipable.Helmet.Helmet;
+import Itens.Equipable.Weapon.Weapon;
+import Itens.HeroItem;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,25 +16,27 @@ public abstract class Hero extends Entity {
     protected Weapon weapon;
     protected Helmet helmet;
     protected BodyArmor bodyArmor;
-    protected ArrayList<HeroItem>;
+    protected ArrayList<HeroItem> inventory;
 
     protected String description;
+    protected String heroClass;
 
-    public Hero () {
+    public Hero (String name) {
+        this.name = name;
         this.maxHp += 100;
         this.strenght += 10;
         this.agility +=10;
         this.level = 1;
         this.xpToLevel = 10;
-        this.allocateStats(30);
-
+        this.inventory = new ArrayList<HeroItem>();
+        this.scrap = 0;
     }
 
     /**
-     * receives an int number of stats available to distribute between STRENGHT and AGILITY
+     * Receives an int number of stats available to distribute between STRENGTH and AGILITY.
      * @param availableStats
      */
-    private void allocateStats(int availableStats) {
+    protected void allocateStats(int availableStats) {
         Scanner in = new Scanner(System.in);
         this.showStats();
         System.out.println("You have " + availableStats + " points to allocate");
@@ -73,7 +79,7 @@ public abstract class Hero extends Entity {
     /**
      * Shows a hero's main stats (name, class, level, XPtoLevel, maxHP, STR, AGI)
      */
-    private void showStats() {
+    public void showStats() {
         System.out.println("******** " + this.name + " ********");
         System.out.println("******** " + this.heroClass + " ********");
         System.out.println("Level " + this.level + "(" + this.xpToLevel + "Xp to level up)");
@@ -83,11 +89,21 @@ public abstract class Hero extends Entity {
     }
 
     /**
-     * receives an int amount of XP gained, if hero levels, allocates stats and determines XP for next level
+     * Receives an int amount of XP gained, if hero levels, allocates stats and determines XP for next level
      * @param xpGained
      */
     public void gainXp ( int xpGained ) {
-
+        if ( xpGained >= this.xpToLevel ) {
+            xpGained -= this.xpToLevel;
+            this.level++;
+            this.maxHp += 10; this.currentHp += 10;
+            allocateStats(1);
+            //determine nextlevel XP
+            this.xpToLevel = this.level * 10;
+            gainXp(xpGained);
+        }
+        else {
+            xpToLevel -= xpGained;
+        }
     }
-
 }
