@@ -1,9 +1,12 @@
 package Itens.Equipable.Weapon;
 
+import Enums.InventoryMode;
+
 public class HuntingRifle extends Weapon{
     public HuntingRifle(int step) {
         super(step);
         this.name = "Hunting Rifle";
+        this.description = "The hunting rifle can snipe foes from afar \nSpecial: Scoped Shot";
         this.strength = 13;
         super.scale();
     }
@@ -17,4 +20,6 @@ public class HuntingRifle extends Weapon{
     public int[] specialAttack() {
         return new int[]{this.strength*2, 0, 0};
     }
+
+
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".alunoView"
+    >
+
+
+    <Button
+        android:id="@+id/voltar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:textSize="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome:"
+        android:textSize="40dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="4dp"
+        />
+
+    <TextView
+        android:id="@+id/aluno_nome_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="nome"
+        android:textSize="40dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="4dp"
+        android:paddingLeft="15dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Morada:"
+        android:textSize="40dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="4dp"
+        />
+
+    <TextView
+        android:id="@+id/aluno_morada_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="morada"
+        android:textSize="40dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="4dp"
+        android:paddingLeft="15dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:textSize="40dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="4dp"
+        />
+
+    <TextView
+        android:id="@+id/aluno_email_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:textSize="40dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="4dp"
+        android:paddingLeft="15dp"
+        />
+
+    <Button
+        android:id="@+id/filme_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:text="Filme favorito"
+        />
+
+
+</LinearLayout>

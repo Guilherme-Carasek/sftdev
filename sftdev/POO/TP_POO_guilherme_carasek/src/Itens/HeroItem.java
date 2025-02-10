@@ -1,9 +1,15 @@
 package Itens;
 
+import Entities.Foes.Foe;
+import Entities.Heros.Hero;
+import Enums.InventoryMode;
+
 public abstract class HeroItem {
     protected String name;
+    protected String description;
     protected int value;
     protected int step;
+
 
     public HeroItem( int step ) {
         this.step = step;
@@ -28,13 +34,21 @@ public abstract class HeroItem {
     }
 
     /**
-     * Item inspect will show user the description of the item, plus options based on the parameter given.
-     * Can receive Foe(when in battle), vendor(when in shop), no parameter(when in corridor)
+     * Item inspect will show user the description of the item, plus options based on the mode given.
+     * In battle mode, must receive a Foe
+     * @param hero
      * @param foe
+     * @param mode
      * @returns true if the hero still has their turn(no item was used)
      */
-    public abstract boolean inspect ( Foe foe );
-    public abstract boolean inspect ( Vendor vendor );
-    public abstract boolean inspect ();
+    public abstract boolean inspect (InventoryMode mode, Hero hero, Foe foe );
+
+    /**
+     * Item inspect will show user the description of the item, plus options based on the mode given.
+     * In battle mode, must receive a Foe
+     * @param mode
+     * @return
+     */
+    public abstract boolean inspect ( InventoryMode mode, Hero hero );
 
 }

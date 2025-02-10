@@ -106,4 +106,35 @@ public abstract class Hero extends Entity {
             xpToLevel -= xpGained;
         }
     }
+
+    public void equipWeapon( Weapon newWeapon ){
+        this.inventory.add(this.weapon);
+        this.weapon = newWeapon;
+        this.inventory.remove(newWeapon);
+    }
+
+    public void equipBodyArmor(BodyArmor newBodyArmor) {
+        this.maxHp += newBodyArmor.getBonusHp(); this.currentHp += newBodyArmor.getBonusHp(); this.agility += newBodyArmor.getBonusAgility();
+
+        this.currentHp -= this.bodyArmor.getBonusHp(); this.maxHp -= this.bodyArmor.getBonusHp(); this.agility -= this.bodyArmor.getBonusAgility();
+
+        this.inventory.add(this.bodyArmor);
+        this.bodyArmor = newBodyArmor;
+        this.inventory.remove(newBodyArmor);
+    }
+
+    public void equipHelmet(Helmet newHelmet) {
+        this.maxHp += newHelmet.getBonusHp(); this.currentHp += newHelmet.getBonusHp(); this.agility += newHelmet.getBonusAgility();
+
+        this.currentHp -= this.helmet.getBonusHp(); this.maxHp -= this.helmet.getBonusHp(); this.agility -= this.helmet.getBonusAgility();
+
+        this.inventory.add(this.helmet);
+        this.helmet = newHelmet;
+        this.inventory.remove(newHelmet);
+    }
+
+    public void sellItem(HeroItem itemToSell) {
+        this.scrap += ((int)Math.round(itemToSell.getValue()/2));
+        this.inventory.remove(itemToSell);
+    }
 }
