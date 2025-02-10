@@ -7,4 +7,14 @@ public class Shotgun extends Weapon{
         this.strength = 8;
         super.scale();
     }
+
+    @Override
+    public int[] basicAttack() {
+        return new int[]{this.strength, 0, 0};
+    }
+
+    @Override
+    public int[] specialAttack() {
+        return new int[]{this.strength, 0, this.strength};
+    }
 }

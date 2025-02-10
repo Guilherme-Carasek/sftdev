@@ -7,4 +7,16 @@ public class CoachGun extends Weapon{
         this.strength = 10;
         super.scale();
     }
+
+    @Override
+    public int[] basicAttack() {
+        return new int[]{this.strength, 0, 0};
+    }
+
+    @Override
+    public int[] specialAttack() {
+        return new int[]{this.strength/2, this.strength/2, 0};
+    }
+
+
 }

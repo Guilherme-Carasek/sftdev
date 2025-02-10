@@ -26,4 +26,15 @@ public abstract class HeroItem {
     public String getName() {
         return name;
     }
+
+    /**
+     * Item inspect will show user the description of the item, plus options based on the parameter given.
+     * Can receive Foe(when in battle), vendor(when in shop), no parameter(when in corridor)
+     * @param foe
+     * @returns true if the hero still has their turn(no item was used)
+     */
+    public abstract boolean inspect ( Foe foe );
+    public abstract boolean inspect ( Vendor vendor );
+    public abstract boolean inspect ();
+
 }

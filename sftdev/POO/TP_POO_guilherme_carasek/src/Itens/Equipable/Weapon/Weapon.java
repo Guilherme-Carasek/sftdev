@@ -15,7 +15,15 @@ public abstract class Weapon extends HeroItem {
 
     }
 
-    //método para ataque básico
+    /**
+     * Abstract method for a weapon's basic attack.
+     * @returns an int array with [0]=damage, [1]=damage over time, [2]=healing.
+     */
+    public abstract int[] basicAttack();
 
-    //método abstrato para ataque especial
+    /**
+     * Abstract method for a weapon's special attack.
+     * @returns an int array with [0]=damage, [1]=damage over time, [2]=healing.
+     */
+    public abstract int[] specialAttack();
 }
