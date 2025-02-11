@@ -10,6 +10,7 @@ public abstract class Armor extends HeroItem {
 
     public Armor( int step ) {
         super(step);
+        this.description = "It's an armor item, no lore here...";
     }
 
     @Override
