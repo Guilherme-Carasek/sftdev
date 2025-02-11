@@ -40,9 +40,6 @@
                         Morada inválida
                     @enderror
                 </div>
-                @if( $user->id != 0 )
-                    <input hidden type="text" value=" {{ $user->id }} " >
-                @endif
                 <button type="submit" class="btn btn-info">Enviar</button>
             </form>
         </div>

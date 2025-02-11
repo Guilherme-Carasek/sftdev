@@ -12,9 +12,8 @@
       <label for="passwordInput" class="form-label">Password</label>
       <input type="password" name="password" class="form-control" id="passwordInput">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="remember" name="remember">
-      <label class="form-check-label" for="exampleCheck1">Seguir conectado</label>
+    <div class="mb-3">
+        <a href="{{route('password.request')}}">Esqueceu-se da password?</a>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

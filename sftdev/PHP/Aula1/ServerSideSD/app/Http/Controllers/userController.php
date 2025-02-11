@@ -89,7 +89,42 @@ class userController extends Controller
 
     public function createUser(Request $request){
 
-        $request->validate([
+         //é um update
+         if(isset( $request->id)){
+            $request->validate([
+                'name' => 'required|string|min:3',
+                'address' =>'max:100',
+                'photo' => 'image'
+            ]);
+
+            User::where('id',  $request->id)
+            ->update([
+                'name' => $request->name,
+                    'nif' => $request->nif,
+                    'address' => $request->address
+            ]);
+
+            return redirect()->route('users.show')->with('message', 'User actualizado com sucesso');
+        }else{
+
+            $request->validate([
+                'name' => 'required|string|min:3',
+                'email' =>'required|email|unique:users',
+                'password' =>'required|min:8'
+            ]);
+
+            User::insert(
+                [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+
+            ]);
+
+            return redirect()->route('users.show')->with('message', 'User adicionado com sucesso');
+        }
+
+        /* $request->validate([
             'name' => 'required | String | min:3',
             'adress' => 'nullable'
         ]);
@@ -117,6 +152,6 @@ class userController extends Controller
             ]);
 
             return redirect()->route('users.show')->with('message', 'Utilizador atualizado com sucesso');
-        }
+        } */
     }
 }
