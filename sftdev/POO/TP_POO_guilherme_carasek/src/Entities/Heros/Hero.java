@@ -1,6 +1,7 @@
 package Entities.Heros;
 
 import Entities.Entity;
+import Entities.Foes.Foe;
 import Itens.Equipable.BodyArmor.BodyArmor;
 import Itens.Equipable.Helmet.Helmet;
 import Itens.Equipable.Weapon.Weapon;
@@ -89,7 +90,7 @@ public abstract class Hero extends Entity {
     }
 
     /**
-     * Receives an int amount of XP gained, if hero levels, allocates stats and determines XP for next level
+     * Receives an int amount of XP gained, if hero levels, allocates stats and determines XP for next level.
      * @param xpGained
      */
     public void gainXp ( int xpGained ) {
@@ -107,12 +108,28 @@ public abstract class Hero extends Entity {
         }
     }
 
+    /**
+     * Increments hero's Scrap.
+     * @param scrapGained
+     */
+    public void gainScrap ( int scrapGained ) {
+        this.scrap += scrapGained;
+    }
+
+    /**
+     * Equips a weapon from the inventory, stores the current weapon.
+     * @param newWeapon
+     */
     public void equipWeapon( Weapon newWeapon ){
         this.inventory.add(this.weapon);
         this.weapon = newWeapon;
         this.inventory.remove(newWeapon);
     }
 
+    /**
+     * Equips a body armor from inventory, stores the current, and updates bonus stats.
+     * @param newBodyArmor
+     */
     public void equipBodyArmor(BodyArmor newBodyArmor) {
         this.maxHp += newBodyArmor.getBonusHp(); this.currentHp += newBodyArmor.getBonusHp(); this.agility += newBodyArmor.getBonusAgility();
 
@@ -123,6 +140,10 @@ public abstract class Hero extends Entity {
         this.inventory.remove(newBodyArmor);
     }
 
+    /**
+     * Equips a helmet from inventory, stores the current, and updates bonus stats.
+     * @param newHelmet
+     */
     public void equipHelmet(Helmet newHelmet) {
         this.maxHp += newHelmet.getBonusHp(); this.currentHp += newHelmet.getBonusHp(); this.agility += newHelmet.getBonusAgility();
 
@@ -133,8 +154,27 @@ public abstract class Hero extends Entity {
         this.inventory.remove(newHelmet);
     }
 
+    /**
+     * Sells item from inventory at half value(rounds down).
+     * @param itemToSell
+     */
     public void sellItem(HeroItem itemToSell) {
-        this.scrap += ((int)Math.round(itemToSell.getValue()/2));
+        this.scrap += itemToSell.getValue() / 2;
         this.inventory.remove(itemToSell);
+    }
+
+    /**
+     * Fights a foe until someone perishes.
+     * @param foe
+     * @return 3 to exit the room after combat.
+     */
+    public int fight(Foe foe) {
+        Scanner in = new Scanner(System.in);
+
+        while (this.currentHp > 0 && foe.getCurrentHp() > 0){
+            System.out.println(this.name + ": " + this.currentHp );
+        }
+
+        return 3;
     }
 }

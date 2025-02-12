@@ -9,4 +9,19 @@ public abstract class Entity {
     protected int[] damageOverTime = new int[2];
     protected int scrap = 0;
 
+    public String getName() {
+        return name;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public int getCurrentHp() {
+        return currentHp;
+    }
+
+    public int getScrap() {
+        return scrap;
+    }
 }

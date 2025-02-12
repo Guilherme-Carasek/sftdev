@@ -5,7 +5,7 @@ import Entities.Entity;
 public abstract class Foe extends Entity {
     private int xp;
 
-    public Foe(int step) {
+    public Foe() {
         this.maxHp = 5;
         this.strenght = 1;
         this.agility = 1;
@@ -13,6 +13,14 @@ public abstract class Foe extends Entity {
         this.xp = 1;
     }
 
+    public int getXp() {
+        return xp;
+    }
+
+    /**
+     *
+     * @param step
+     */
     protected void scale(int step){
         //int that shows how many steps occurred in a set of 20(after that, difficulty graph should reset with a bump)
         int modTwenty = step%20;
@@ -27,4 +35,19 @@ public abstract class Foe extends Entity {
         this.scrap = (int) Math.round(this.scrap * scaleFactor);
         this.xp = (int) Math.round(this.xp * scaleFactor);
     }
+
+    /**
+     * Returns a "greet" to be displayed as the hero enters the room.
+     * @return
+     */
+    public abstract String greet();
+
+    /**
+     * Returns text to be displayed when the hero tries to interact with foe.
+     * Can be dialogue or just thoughts through the hero's mind.
+     * @param counter
+     * @return
+     */
+    public abstract String talk(int counter);
+
 }

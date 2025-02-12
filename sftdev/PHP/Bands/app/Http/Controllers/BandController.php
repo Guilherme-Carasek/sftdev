@@ -19,7 +19,7 @@ class BandController extends Controller
      */
     public function create()
     {
-        //
+        return view('bands.create_bands');
     }
 
     /**
