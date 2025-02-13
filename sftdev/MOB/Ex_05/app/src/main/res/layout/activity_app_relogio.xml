@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/fullscreenBackgroundColor"
+    android:orientation="horizontal"
+    android:theme="@style/ThemeOverlay.Ex_05.FullscreenContainer"
+    tools:context=".App_Relogio">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world"
+        android:textSize="30sp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        />
+
+<LinearLayout
+    android:id="@+id/linear_clock"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    >
+    <TextClock
+        android:id="@+id/clock_horas_minutos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format12Hour="hh:mm"
+        android:format24Hour="hh:mm"
+        android:text="00:00"
+        android:textSize="100sp"
+        />
+
+    <TextClock
+        android:id="@+id/clock_segundos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format12Hour="ss"
+        android:format24Hour="ss"
+        android:text="00"
+        android:textSize="30sp"
+        />
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        >
+
+        <CheckBox
+            android:id="@+id/checkbox_battery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
+        <TextView
+            android:id="@+id/text_battery_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_level"
+            />
+
+
+</LinearLayout>
+</RelativeLayout>

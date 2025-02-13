@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Applicacion</string>
+    <string name="title_activity_app_relogio">helohio</string>
+    <string name="dummy_button">boton</string>
+    <string name="dummy_content">conteudo dummy</string>
+    <string name="hello_world">hola mundo</string>
+    <string name="battery_level">nivel de bateria</string>
+</resources>

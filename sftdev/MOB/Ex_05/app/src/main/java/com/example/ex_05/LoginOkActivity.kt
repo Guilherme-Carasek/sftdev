@@ -45,8 +45,12 @@ class LoginOkActivity : AppCompatActivity() {
             binding.listaAlunos.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaAlunos)
 //            finish()
 //            startActivity(getIntent())
-
         }
+
+        binding.menuButton.setOnClickListener{
+            startActivity(Intent(this, Menu::class.java))
+        }
+
 
     }
 }

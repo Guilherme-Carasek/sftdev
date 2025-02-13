@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App</string>
+    <string name="title_activity_app_relogio">Zeit App</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">Dummy Content</string>
+    <string name="hello_world">Hallo Welt</string>
+    <string name="battery_level">Battery level</string>
+</resources>

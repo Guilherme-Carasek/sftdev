@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Ex_05</string>
+    <string name="app_name">Application</string>
+    <string name="hello_world">Hello world</string>
+    <string name="title_activity_app_relogio">App_Clock</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="battery_level">Battery level</string>
 </resources>
