@@ -1,0 +1,2 @@
+feito singleton logger
+testando singleton logger
