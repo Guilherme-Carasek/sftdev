@@ -50,4 +50,9 @@ public abstract class Foe extends Entity {
      */
     public abstract String talk(int counter);
 
+    public void takeDamage(int damage){
+        this.currentHp -= damage;
+        System.out.print(this.name + " took " + damage + " ");
+    }
+
 }

@@ -24,4 +24,16 @@ public abstract class Entity {
     public int getScrap() {
         return scrap;
     }
+
+    public int getAgility(){
+        return this.agility;
+    }
+
+    public int getStrenght(){ return this.strenght; }
+
+    public void updateDot(int dotDamage) {
+        this.damageOverTime[0] += dotDamage;
+        this.damageOverTime[1] = 3;
+        System.out.println(this.name + " was set on fire!");
+    }
 }

@@ -2,6 +2,7 @@ package Entities.Heros;
 
 import Entities.Entity;
 import Entities.Foes.Foe;
+import Enums.InventoryMode;
 import Itens.Equipable.BodyArmor.BodyArmor;
 import Itens.Equipable.Helmet.Helmet;
 import Itens.Equipable.Weapon.Weapon;
@@ -170,11 +171,94 @@ public abstract class Hero extends Entity {
      */
     public int fight(Foe foe) {
         Scanner in = new Scanner(System.in);
+        int choice = -1;
+
+        int specialUses = 1;
 
         while (this.currentHp > 0 && foe.getCurrentHp() > 0){
-            System.out.println(this.name + ": " + this.currentHp );
+            System.out.println( this.name + ": " + this.currentHp + "/" + this.maxHp );
+            System.out.println( foe.getName() + ": " + foe.getCurrentHp() + "/" + foe.getMaxHp() );
+            System.out.println();
+
+            if (this.agility < foe.getAgility()) {
+                this.currentHp -= foe.getStrenght();
+                System.out.println(foe.getName() + " attacked for " + foe.getStrenght());
+            }
+            boolean done = false;
+            while (!done){
+                System.out.println("1. Basic attack");
+                System.out.println("2. Special attack (" + specialUses + "/1)");
+                System.out.println("3. Inventory");
+                if (in.hasNextInt()) choice = in.nextInt();
+                switch (choice) {
+                    default:
+                        System.out.println("Invalid choice");break;
+                    case 1:
+                        updateStats(this.weapon.basicAttack(), foe);
+                        done = true;
+                        break;
+                    case 2:
+                        if( specialUses > 0 ){
+                            updateStats(this.weapon.specialAttack(), foe);
+                            done = true;
+                        }else System.out.println("No special uses left!");
+                        break;
+                    case 3:
+                        if(!this.seeInventory(InventoryMode.BATTLE, foe)){
+                            done = true;
+                        }
+                        break;
+                }
+                if (this.agility >= foe.getAgility()) {
+                    this.currentHp -= foe.getStrenght();
+                    System.out.println(foe.getName() + " attacked for " + foe.getStrenght());
+                }
+            }
         }
+        if (this.currentHp <= 0) this.perish();
 
         return 3;
+    }
+
+    private boolean seeInventory(InventoryMode inventoryMode, Foe foe) {
+        Scanner in = new Scanner(System.in);
+        int choice = -2;
+        boolean hasTurn = true;
+        while (choice != -1) {
+            int itemCount = 0;
+            for (HeroItem itemInInventory : this.inventory) {
+                System.out.println(++itemCount + ". " + itemInInventory.getName());
+            }
+            System.out.println("0. Return");
+
+            if ( in.hasNextInt() ) choice = in.nextInt() - 1;
+            if (choice >= 0 && choice < this.inventory.size()){
+                hasTurn = this.inventory.get(choice).inspect(inventoryMode, this, foe);
+                if (!hasTurn) return false;
+            }
+        }
+        return true;
+    }
+
+    public void updateStats (int[] stats, Foe foe){
+        if (stats[0] != 0){
+            foe.takeDamage(stats[0]);
+            System.out.println("from your attack!");
+        }
+        if (stats[1] != 0){
+            foe.updateDot(stats[1]);
+        }
+        if (stats[2] != 0){
+            this.currentHp += stats[2];
+            if ( this.currentHp > this.maxHp){
+                this.currentHp = this.maxHp;
+                System.out.println(this.name + " healed to full!");
+            }else System.out.println(this.name + " healed " + stats[2] + "Hp!");
+        }
+    }
+
+
+    private void perish(){
+        System.out.println(this.name + " has perished");
     }
 }
