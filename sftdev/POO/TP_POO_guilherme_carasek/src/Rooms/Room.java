@@ -10,5 +10,11 @@ public abstract class Room {
      */
     public abstract String describe();
 
-    public abstract void enter(Hero hero, int step);
+    /**
+     *
+     * @param hero
+     * @param step
+     * @return true if hero is alive.
+     */
+    public abstract boolean enter(Hero hero, int step);
 }

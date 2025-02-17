@@ -49,7 +49,6 @@ public abstract class Hero extends Entity {
             while (pointsToAdd > availableStats || pointsToAdd < 0) {
                 System.out.println("Please enter a valid amount");
                 if (in.hasNextInt()) pointsToAdd = in.nextInt();
-//                else in.reset();
                 if (counter++ > 5) pointsToAdd = 0;
             }
             this.strenght += pointsToAdd;
@@ -169,7 +168,7 @@ public abstract class Hero extends Entity {
      * @param foe
      * @return 3 to exit the room after combat.
      */
-    public int fight(Foe foe) {
+    public boolean fight(Foe foe) {
         Scanner in = new Scanner(System.in);
         int choice = -1;
 
@@ -180,10 +179,12 @@ public abstract class Hero extends Entity {
             System.out.println( foe.getName() + ": " + foe.getCurrentHp() + "/" + foe.getMaxHp() );
             System.out.println();
 
-            if (this.agility < foe.getAgility()) {
+            if (this.agility < foe.getAgility()) { //foe acts first
+
                 this.currentHp -= foe.getStrenght();
                 System.out.println(foe.getName() + " attacked for " + foe.getStrenght());
             }
+            //hero's turn
             boolean done = false;
             while (!done){
                 System.out.println("1. Basic attack");
@@ -215,9 +216,12 @@ public abstract class Hero extends Entity {
                 }
             }
         }
-        if (this.currentHp <= 0) this.perish();
+        if (this.currentHp <= 0) {
+            this.perish();
+            return false;
+        }
 
-        return 3;
+        return true;
     }
 
     private boolean seeInventory(InventoryMode inventoryMode, Foe foe) {

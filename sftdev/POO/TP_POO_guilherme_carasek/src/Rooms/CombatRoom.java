@@ -17,8 +17,11 @@ public class CombatRoom extends Room{
         return "A ruined city of a past time";
     }
 
+    /**
+     * Returns true if hero is alive.
+     */
     @Override
-    public void enter(Hero hero, int step) {
+    public boolean enter(Hero hero, int step) {
         Foe foe = generateFoe(step);
         System.out.println(foe.greet());
 
@@ -37,11 +40,12 @@ public class CombatRoom extends Room{
                 switch (choice){
                     default : break;
                     case 1: foe.talk(++counter);
-                    case 2: choice = hero.fight(foe);
-                    case 3: return;
+                    case 2: return hero.fight(foe);
+                    case 3: return true;
                 }
             }
         }
+        return true;
     }
 
     /**
