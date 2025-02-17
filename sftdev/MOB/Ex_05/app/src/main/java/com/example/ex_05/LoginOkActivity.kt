@@ -43,8 +43,10 @@ class LoginOkActivity : AppCompatActivity() {
             listaAlunos.add(Aluno(nomeNovo, moradaNova, emailNovo))
 
             binding.listaAlunos.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaAlunos)
-//            finish()
-//            startActivity(getIntent())
+
+            binding.adicionarNome.text.clear()
+            binding.adicionarMorada.text.clear()
+            binding.adicionarEmail.text.clear()
         }
 
         binding.menuButton.setOnClickListener{

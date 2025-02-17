@@ -22,5 +22,8 @@ class Menu : AppCompatActivity() {
             startActivity(Intent(this, App_Relogio::class.java))
         }
 
+        binding.contactsButton.setOnClickListener{
+            startActivity(Intent(this, LoginOkActivity::class.java))
+        }
     }
 }

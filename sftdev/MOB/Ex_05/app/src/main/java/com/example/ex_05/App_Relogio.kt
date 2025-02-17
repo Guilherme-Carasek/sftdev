@@ -31,7 +31,7 @@ class App_Relogio : AppCompatActivity() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent != null){
                 val nivel: Int = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0)
-                binding.textBatteryLevel.text = nivel.toString()
+                binding.textBattery.text = nivel.toString()
             }
         }
         
@@ -61,12 +61,28 @@ class App_Relogio : AppCompatActivity() {
         binding.checkboxBattery.setOnClickListener{
             if (isChecked) {
                 isChecked=false
-                binding.textBatteryLevel.visibility = View.GONE
+                binding.textBattery.visibility = View.GONE
             } else{
                 isChecked = true
-                binding.textBatteryLevel.visibility = View.VISIBLE
+                binding.textBattery.visibility = View.VISIBLE
             }
         }
+
+
+        binding.preferencesButton.setOnClickListener{
+            binding.linearBattery.visibility = View.VISIBLE
+            binding.linearBattery.animate().translationY(0F).setDuration(
+                resources.getInteger(android.R.integer.config_mediumAnimTime).toLong()
+            )
+
+        }
+
+        binding.closePreferencesButton.setOnClickListener{
+            binding.linearBattery.animate().translationY(binding.linearBattery.measuredHeight.toFloat()).setDuration(
+                resources.getInteger(android.R.integer.config_mediumAnimTime).toLong()
+            )
+        }
     }
+
 
 }

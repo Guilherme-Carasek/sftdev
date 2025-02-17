@@ -9,9 +9,10 @@
     tools:context=".App_Relogio">
 
     <TextView
+        android:id="@+id/text_battery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world"
+        android:text="Battery"
         android:textSize="30sp"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
@@ -44,18 +45,34 @@
         />
 </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linear_battery"
+    <ImageView
+        android:id="@+id/preferences_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="20dp"
+        android:src="@android:drawable/ic_menu_preferences"
+
+
+        />
+
+    <LinearLayout
+        android:id="@+id/linear_battery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#007fa9"
         >
 
         <CheckBox
             android:id="@+id/checkbox_battery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
+            android:padding="30dp"
 
             />
 
@@ -64,6 +81,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/battery_level"
+            />
+
+        <ImageView
+            android:id="@+id/close_Preferences_Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="20dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+
+
             />
 
 

@@ -8,6 +8,7 @@
     tools:context=".blocoNotas">
 
 
+
     <Button
         android:id="@+id/menu_button"
         android:layout_width="wrap_content"
@@ -34,8 +35,8 @@
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp"
+        android:hint="Your new note here"
         app:layout_constraintBottom_toTopOf="@+id/save_note_button"
-        app:layout_constraintTop_toBottomOf="@+id/listNotes"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
@@ -47,6 +48,9 @@
         android:text="Gravar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

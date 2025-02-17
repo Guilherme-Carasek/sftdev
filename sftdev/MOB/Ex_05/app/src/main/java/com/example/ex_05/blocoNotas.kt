@@ -2,7 +2,6 @@ package com.example.ex_05
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -18,24 +17,42 @@ class blocoNotas : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
         val listaNotas = ArrayList<String>()
 
         val sharedPreferences = this.getSharedPreferences("notes", Context.MODE_PRIVATE)
 
+        val setNotas = sharedPreferences.getStringSet("notes", emptySet())?.toMutableList() ?: mutableListOf()
 
+        listaNotas.addAll(setNotas)
 
-        binding.listNotes.adapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, listaNotas)
+        binding.listNotes.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaNotas)
 
         binding.saveNoteButton.setOnClickListener{
             val newNote:String = binding.editNotes.text.toString()
-            listaNotas.add(newNote)
 
-            // val gson = Gson()
+            setNotas.add(newNote)
+            val editor = sharedPreferences.edit()
+            editor.putStringSet("notes", setNotas.toSet())
+            editor.apply()
 
+            binding.editNotes.text.clear()
 
-            val editor:SharedPreferences.Editor = sharedPreferences.edit()
+            listaNotas.clear()
+            listaNotas.addAll(setNotas)
+            binding.listNotes.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaNotas)
 
+        }
 
+        binding.listNotes.setOnItemClickListener{ parent, view, position, id ->
+            setNotas.remove(listaNotas.get(position))
+            val editor = sharedPreferences.edit()
+            editor.putStringSet("notes", setNotas.toSet())
+            editor.apply()
+
+            listaNotas.clear()
+            listaNotas.addAll(setNotas)
+            binding.listNotes.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaNotas)
         }
 
     }
@@ -61,4 +78,5 @@ class blocoNotas : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
     }
+
 }
