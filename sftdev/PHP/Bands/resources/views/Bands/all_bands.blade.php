@@ -6,35 +6,27 @@ Bands 🎸
 
 @section('content')
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
+    <h1>All bands</h1>
+
+
+    @foreach($bands as $band)
+
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ $band->photo ? asset('storage/' . $band->photo) : asset('img/nophoto.png') }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h5 class="card-title">{{ $band->name }}</h5>
+                <p class="card-text"><a href="#"><button class="btn btn-primary">Albuns</button></a></p>
+                <p class="card-text"></p>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    @endforeach
 
 
 @endsection

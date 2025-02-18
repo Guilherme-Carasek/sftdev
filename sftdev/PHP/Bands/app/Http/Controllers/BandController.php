@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Band;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class BandController extends Controller
 {
@@ -11,7 +14,11 @@ class BandController extends Controller
      */
     public function index()
     {
-        return view('bands.all_bands');
+        $bands = DB::table('bands')
+        ->select('name','photo')
+        ->get();
+
+        return view('bands.all_bands', compact('bands'));
     }
 
     /**
@@ -27,7 +34,23 @@ class BandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:3|max:22|unique:bands,name',
+            'photo' => 'image'
+        ]);
+
+        $photo= null;
+
+        if($request->hasFile('photo')){
+            $photo = Storage::putFile('bandPhotos', $request->photo);
+        }
+
+        Band::insert([
+            'name' => $request->name,
+            'photo' => $photo
+        ]);
+
+        return redirect()->route('bands.index')->with('message', 'Succesfully added band to the catalog');
     }
 
     /**
@@ -59,6 +82,10 @@ class BandController extends Controller
      */
     public function destroy(string $id)
     {
+        //
+    }
+
+    private function getBandsFromDb(){
         //
     }
 }

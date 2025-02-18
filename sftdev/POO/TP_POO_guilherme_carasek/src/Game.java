@@ -66,13 +66,14 @@ public class Game {
             if (in.hasNextInt()) choice = in.nextInt();
             switch (choice){
                 case 1:
-                    return new ExCultist(name, statsGiven);
+                    ExCultist exCultist = new ExCultist(name, statsGiven);
+                    return exCultist;
                 case 2:
                     return new Hunter(name, statsGiven);
                 case 3:
                     return new Scrapper(name, statsGiven);
             }
         }
-        return null;
+        return new ExCultist(name, statsGiven);
     }
 }
