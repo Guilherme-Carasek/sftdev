@@ -28,23 +28,25 @@ public class CombatRoom extends Room{
         Scanner in = new Scanner(System.in);
 
         int choice = -1;
-        if ( in.hasNextInt() ) {
-            choice = in.nextInt();
+
             while (choice != 3){
                 System.out.println("You need to make a decision:");
                 System.out.println("1. Interact");
                 System.out.println("2. Fight");
                 System.out.println("3. Run");
 
+                if ( in.hasNextInt() ) choice = in.nextInt();
+
                 int counter = 0;
                 switch (choice){
                     default : break;
-                    case 1: foe.talk(++counter);
+                    case 1:
+                        System.out.println(foe.talk(++counter));
+                        break;
                     case 2: return hero.fight(foe);
                     case 3: return true;
                 }
             }
-        }
         return true;
     }
 
@@ -55,19 +57,15 @@ public class CombatRoom extends Room{
      */
     protected Foe generateFoe(int step){
         Random rnd = new Random();
-        Foe foe;
-        switch (rnd.nextInt(1,4)){
+        int randomFoe = rnd.nextInt(1,4);
+        switch (randomFoe){
             default: return null;
             case 1:
-                Hulk hulk = new Hulk(step);
-                foe = hulk;
+                return new Hulk(step);
             case 2:
-                RootBrute brute = new RootBrute(step);
-                foe = brute;
+                return new RootBrute(step);
             case 3:
-                Stalker stalker = new Stalker(step);
-                foe = stalker;
+                return new Stalker(step);
         }
-        return foe;
     }
 }

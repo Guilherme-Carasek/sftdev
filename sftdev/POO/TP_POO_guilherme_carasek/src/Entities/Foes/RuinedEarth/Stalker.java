@@ -5,6 +5,7 @@ import Entities.Foes.Assassin;
 public class Stalker extends Assassin {
     public Stalker(int step) {
         super(step);
+        this.name = "Stalker";
     }
 
     @Override

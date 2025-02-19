@@ -82,7 +82,7 @@ public abstract class Hero extends Entity {
      */
     public void showStats() {
         System.out.println("******** " + this.name + " ********");
-        System.out.println("******** " + this.heroClass + " ********");
+        System.out.println("******** " + this.getClass().getSimpleName() + " ********");
         System.out.println("Level " + this.level + "(" + this.xpToLevel + "Xp to level up)");
         System.out.println("Max HP: " + this.maxHp);
         System.out.println("Strenght: " + this.strenght);
@@ -180,7 +180,8 @@ public abstract class Hero extends Entity {
             System.out.println();
 
             if (this.agility < foe.getAgility()) { //foe acts first
-
+                foe.countDownDot();
+                if (foe.getCurrentHp() < 1) break;
                 this.currentHp -= foe.getStrenght();
                 System.out.println(foe.getName() + " attacked for " + foe.getStrenght());
             }
@@ -199,7 +200,7 @@ public abstract class Hero extends Entity {
                         done = true;
                         break;
                     case 2:
-                        if( specialUses > 0 ){
+                        if( specialUses-- > 0 ){
                             updateStats(this.weapon.specialAttack(), foe);
                             done = true;
                         }else System.out.println("No special uses left!");
@@ -210,7 +211,9 @@ public abstract class Hero extends Entity {
                         }
                         break;
                 }
-                if (this.agility >= foe.getAgility()) {
+                if (this.agility >= foe.getAgility()) { //foe acts after hero
+                    foe.countDownDot();
+                    if (foe.getCurrentHp() < 1) break;
                     this.currentHp -= foe.getStrenght();
                     System.out.println(foe.getName() + " attacked for " + foe.getStrenght());
                 }
@@ -220,7 +223,8 @@ public abstract class Hero extends Entity {
             this.perish();
             return false;
         }
-
+        this.gainXp(foe.getXp());
+        this.gainScrap(foe.getScrap());
         return true;
     }
 
@@ -246,7 +250,7 @@ public abstract class Hero extends Entity {
 
     public void updateStats (int[] stats, Foe foe){
         if (stats[0] != 0){
-            foe.takeDamage(stats[0]);
+            foe.takeDamage(stats[0]+this.strenght);
             System.out.println("from your attack!");
         }
         if (stats[1] != 0){

@@ -5,5 +5,6 @@ public class Main {
         Logger logger = Logger.getInstance("app_log.txt");
         logger.log("feito singleton logger");
         logger.log("testando singleton logger");
+        logger.log("log3: algo aconteceu");
     }
 }

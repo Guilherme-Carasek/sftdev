@@ -6,6 +6,7 @@ public class RootBrute extends Tank {
 
     public RootBrute(int step) {
         super(step);
+        this.name = "Root Brute";
     }
 
     @Override

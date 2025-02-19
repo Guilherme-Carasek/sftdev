@@ -1,2 +1,5 @@
 feito singleton logger
 testando singleton logger
+feito singleton logger
+testando singleton logger
+log3: algo aconteceu

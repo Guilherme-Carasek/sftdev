@@ -14,7 +14,7 @@ public abstract class Entity {
     protected int scrap = 0;
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getMaxHp() {
@@ -52,7 +52,7 @@ public abstract class Entity {
     public void countDownDot () {
         if (this.damageOverTime[1]-- > 0){
             this.currentHp -= this.damageOverTime[0];
-            System.out.println(this.name + " has burned for " + this.damageOverTime[1] + " damage!");
+            System.out.println(this.name + " has burned for " + this.damageOverTime[0] + " damage!");
             if ( this.damageOverTime[1] == 0 ) this.damageOverTime[0] = 0;
         }
     }
