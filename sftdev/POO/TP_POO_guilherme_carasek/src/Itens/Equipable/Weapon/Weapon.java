@@ -39,7 +39,7 @@ public abstract class Weapon extends HeroItem {
             int choice = -1;
             while (choice != 0) {
                 System.out.println("******* " + this.name + " *******");
-                System.out.println(this.description);
+                System.out.println(this.description + "\nStrength: " + this.strength);
                 System.out.println("1. Equip");
                 System.out.println("0. Return");
                 if (in.hasNextInt()) choice = in.nextInt();

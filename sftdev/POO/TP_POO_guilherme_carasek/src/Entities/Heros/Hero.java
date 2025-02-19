@@ -64,7 +64,6 @@ public abstract class Hero extends Entity {
             while (pointsToAdd > availableStats || pointsToAdd < 0) {
                 System.out.println("Please enter a valid amount");
                 if (in.hasNextInt()) pointsToAdd = in.nextInt();
-//                else in.reset();
                 if (counter++ > 5) pointsToAdd = 0;
             }
             this.agility += pointsToAdd;
@@ -85,7 +84,7 @@ public abstract class Hero extends Entity {
         System.out.println("******** " + this.getClass().getSimpleName() + " ********");
         System.out.println("Level " + this.level + "(" + this.xpToLevel + "Xp to level up)");
         System.out.println("Max HP: " + this.maxHp);
-        System.out.println("Strenght: " + this.strenght);
+        System.out.println("Strength: " + this.strenght);
         System.out.println("Agility: " + this.agility);
     }
 
@@ -96,7 +95,7 @@ public abstract class Hero extends Entity {
     public void gainXp ( int xpGained ) {
         if ( xpGained >= this.xpToLevel ) {
             xpGained -= this.xpToLevel;
-            this.level++;
+            System.out.println(this.name + " has leveled to " + ++this.level);
             this.maxHp += 10; this.currentHp += 10;
             allocateStats(1);
             //determine nextlevel XP
@@ -155,6 +154,23 @@ public abstract class Hero extends Entity {
     }
 
     /**
+     * Adds item to inventory if hero has sufficient scrap. Else prints error message.
+     * @param itemToBuy
+     * @return
+     */
+    public boolean buyItem(HeroItem itemToBuy){
+        if (this.scrap >= itemToBuy.getValue()){
+            this.inventory.add(itemToBuy);
+            this.scrap -= itemToBuy.getValue();
+            return true;
+        }
+        else {
+            System.out.println("Not enough scrap to buy this item!");
+            return false;
+        }
+    }
+
+    /**
      * Sells item from inventory at half value(rounds down).
      * @param itemToSell
      */
@@ -165,8 +181,8 @@ public abstract class Hero extends Entity {
 
     /**
      * Fights a foe until someone perishes.
-     * @param foe
-     * @return 3 to exit the room after combat.
+     * @param foe - the enemy to fight
+     * @return boolean - if the hero survives or not
      */
     public boolean fight(Foe foe) {
         Scanner in = new Scanner(System.in);
@@ -186,6 +202,13 @@ public abstract class Hero extends Entity {
                 System.out.println(foe.getName() + " attacked for " + foe.getStrenght());
             }
             //hero's turn
+
+            //todo if foes can deal DoT, countdown here
+            if (this.currentHp <= 0) {
+                this.perish();
+                return false;
+            }
+
             boolean done = false;
             while (!done){
                 System.out.println("1. Basic attack");
@@ -223,12 +246,19 @@ public abstract class Hero extends Entity {
             this.perish();
             return false;
         }
+        System.out.println("You gained " + foe.getXp() + "Xp and " + foe.getScrap() + " Scrap");
         this.gainXp(foe.getXp());
         this.gainScrap(foe.getScrap());
         return true;
     }
 
-    private boolean seeInventory(InventoryMode inventoryMode, Foe foe) {
+    /**
+     * Shows inventory and related options to player. Receives foe as parameter in combat mode.
+     * @param inventoryMode
+     * @param foe
+     * @return boolean - if hero still has turn ( hero loses turn if they use or equip an item ).
+     */
+    public boolean seeInventory(InventoryMode inventoryMode, Foe foe) {
         Scanner in = new Scanner(System.in);
         int choice = -2;
         boolean hasTurn = true;
@@ -248,6 +278,28 @@ public abstract class Hero extends Entity {
         return true;
     }
 
+    public void seeInventory(InventoryMode inventoryMode){
+        Scanner in = new Scanner(System.in);
+        int choice = -2;
+        while (choice != -1){
+            int itemCount = 0;
+            for (HeroItem itemInInventory : this.inventory) {
+                System.out.println(++itemCount + ". " + itemInInventory.getName());
+            }
+            System.out.println("0. Return");
+
+            if (in.hasNextInt()) choice = in.nextInt() -1;
+            if (choice >= 0 && choice < this.inventory.size()) {
+                this.inventory.get(choice).inspect(inventoryMode, this);
+            }
+        }
+    }
+
+    /**
+     * Applies damage & DoT to foe, healing to self.
+     * @param stats - Array of stats to update ( 0 -> Damage, 1 -> DoT, 2 -> Healing ).
+     * @param foe
+     */
     public void updateStats (int[] stats, Foe foe){
         if (stats[0] != 0){
             foe.takeDamage(stats[0]+this.strenght);
@@ -265,7 +317,9 @@ public abstract class Hero extends Entity {
         }
     }
 
-
+    /**
+     * TODO do stuff when hero perishes ( save .txt name/level/room ? ).
+     */
     private void perish(){
         System.out.println(this.name + " has perished");
     }

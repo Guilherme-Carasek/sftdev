@@ -3,6 +3,8 @@ import Entities.Heros.Hero;
 import Entities.Heros.Hunter;
 import Entities.Heros.Scrapper;
 import Rooms.CombatRoom;
+import Rooms.Room;
+import Rooms.VendorRoom;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -40,14 +42,30 @@ public class Game {
         boolean isAlive = true;
         int step = 0;
         while (isAlive){
-            Random rnd = new Random();
-            switch (rnd.nextInt(2)){
-                case 0:
-                    CombatRoom combatRoom = new CombatRoom();
-                    isAlive = combatRoom.enter(hero, step++);
-                case 1:
-                    CombatRoom combatRoom2 = new CombatRoom();
-                    isAlive = combatRoom2.enter(hero, step++);
+            System.out.println("You must choose a path.");
+            Room[] rooms = new Room[2];
+            for (int i = 0; i < 2; i++){
+                Random rnd = new Random();
+                int roomSelect = rnd.nextInt(2);
+                switch (roomSelect){
+                    case 0:
+                        CombatRoom combatRoom = new CombatRoom();
+                        System.out.println((i+1) + ". " + combatRoom.describe());
+                        rooms[i] = combatRoom;
+                        break;
+                    case 1:
+                        VendorRoom vendorRoom = new VendorRoom();
+                        System.out.println((i+1) + ". " + vendorRoom.describe());
+                        rooms[i] = vendorRoom;
+                        break;
+                }
+            }
+            int roomchoice = -1;
+            while (roomchoice < 0 || roomchoice > 1){
+                if(in.hasNextInt()) roomchoice = in.nextInt()-1;
+                if (roomchoice == 0 || roomchoice == 1){
+                    isAlive = rooms[roomchoice].enter(hero, step++);
+                }
             }
         }
     }

@@ -4,6 +4,7 @@ import Entities.Heros.Hero;
 import Itens.Equipable.BodyArmor.CultistDuster;
 import Itens.Equipable.BodyArmor.HunterTrenchcoat;
 import Itens.Equipable.BodyArmor.ScrapperBodyPlate;
+import Itens.Equipable.Consumable.DragonHeart;
 import Itens.Equipable.Helmet.CultistHat;
 import Itens.Equipable.Helmet.HunterShroud;
 import Itens.Equipable.Helmet.ScrapperHelmet;
@@ -14,6 +15,7 @@ import Itens.HeroItem;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Vendor {
     private ArrayList<HeroItem> stock;
@@ -53,14 +55,14 @@ public class Vendor {
      * @param hero
      * @param step
      */
-    protected void generateStock(Hero hero, int step) {
+    public void generateStock(Hero hero, int step) {
 
         String heroType = hero.getClass().getSimpleName();
         Random rd = new Random();
 
-        for (int i = 0; i < 10; i++) {
+        while (this.stock.size() < 10) {
 
-            int heroItemToCreate = rd.nextInt(1, 3);
+            int heroItemToCreate = rd.nextInt(1, 6);
             int stepVariance = rd.nextInt(step - 2, step + 2);
 
             switch (heroType) {
@@ -85,6 +87,8 @@ public class Vendor {
                             break;
 
                         case 4: // Potion
+                            DragonHeart dragonHeart = new DragonHeart(stepVariance);
+                            this.stock.add(dragonHeart);
                             break;
 
                         case 5: // InstantWeapon
@@ -111,6 +115,8 @@ public class Vendor {
                             break;
 
                         case 4: // Potion
+                            DragonHeart dragonHeart = new DragonHeart(stepVariance);
+                            this.stock.add(dragonHeart);
                             break;
 
                         case 5: // InstantWeapon
@@ -138,6 +144,8 @@ public class Vendor {
                             break;
 
                         case 4: // Potion
+                            DragonHeart dragonHeart = new DragonHeart(stepVariance);
+                            this.stock.add(dragonHeart);
                             break;
 
                         case 5: // Grenade
@@ -148,6 +156,33 @@ public class Vendor {
 
         }
 
+    }
+
+    /**
+     * Display list of stocked items, with indexes starting from 1.
+     */
+    public void displayStock(Hero hero){
+        Scanner in = new Scanner(System.in);
+
+
+        int choice = -2;
+        while (choice != -1){
+            System.out.println("You have " + hero.getScrap() + " scrap.");
+            int counter = 0;
+            // Scanner in = new Scanner(System.in);
+            for ( HeroItem itemToShow : this.stock ){
+                System.out.println(++counter + ". " + itemToShow.getName() + ": " + itemToShow.getValue() + " scrap.");
+            }
+            System.out.println("0. Return");
+            if (in.hasNextInt()) choice = in.nextInt() -1;
+            if (choice >= 0 && choice < this.stock.size()){
+                if (hero.buyItem(this.stock.get(choice))) this.removeFromStock(this.stock.get(choice));
+            }
+        }
+    }
+
+    public void removeFromStock(HeroItem itemToRemove){
+        this.stock.remove(itemToRemove);
     }
 
 }

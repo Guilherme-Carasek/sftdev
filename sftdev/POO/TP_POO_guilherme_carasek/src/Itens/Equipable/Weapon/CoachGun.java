@@ -4,6 +4,8 @@ public class CoachGun extends Weapon{
     public CoachGun(int step) {
         super(step);
         this.name = "Coach Gun";
+        this.description = "Versatile weapon\nSpecial sets enemies on fire";
+        this.value = 10;
         this.strength = 10;
         super.scale();
     }

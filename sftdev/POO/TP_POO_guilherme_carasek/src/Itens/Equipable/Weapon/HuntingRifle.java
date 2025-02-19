@@ -7,6 +7,7 @@ public class HuntingRifle extends Weapon{
         super(step);
         this.name = "Hunting Rifle";
         this.description = "The hunting rifle can snipe foes from afar \nSpecial: Scoped Shot";
+        this.value = 10;
         this.strength = 13;
         super.scale();
     }
