@@ -20,6 +20,7 @@ public abstract class BodyArmor extends Armor {
             while (choice != 0) {
                 System.out.println("******* " + this.name + " *******");
                 System.out.println(this.description);
+                System.out.println("Bonus HP: " + this.bonusHp + "\nBonus Agility: " + this.bonusAgility);
                 System.out.println("1. Equip");
                 System.out.println("0. Return");
                 if (in.hasNextInt()) choice = in.nextInt();
@@ -41,6 +42,7 @@ public abstract class BodyArmor extends Armor {
             while (choice != 0) {
                 System.out.println("******* " + this.name + " *******");
                 System.out.println(this.description);
+                System.out.println("Bonus HP: " + this.bonusHp + "\nBonus Agility: " + this.bonusAgility);
                 System.out.println("1. Equip");
                 System.out.println("0. Return");
                 if (in.hasNextInt()) choice = in.nextInt();
@@ -55,6 +57,7 @@ public abstract class BodyArmor extends Armor {
             while (choice != 0) {
                 System.out.println("******* " + this.name + " *******");
                 System.out.println(this.description);
+                System.out.println("Bonus HP: " + this.bonusHp + "\nBonus Agility: " + this.bonusAgility);
                 System.out.println("1. Equip");
                 System.out.println("2. Sell");
                 System.out.println("0. Return");

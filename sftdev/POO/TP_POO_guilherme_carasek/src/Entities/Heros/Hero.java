@@ -97,7 +97,7 @@ public abstract class Hero extends Entity {
             xpGained -= this.xpToLevel;
             System.out.println(this.name + " has leveled to " + ++this.level);
             this.maxHp += 10; this.currentHp += 10;
-            allocateStats(1);
+            allocateStats(2);
             //determine nextlevel XP
             this.xpToLevel = this.level * 10;
             gainXp(xpGained);
@@ -295,6 +295,10 @@ public abstract class Hero extends Entity {
         }
     }
 
+    public void removeFromInventory(HeroItem itemToRemove) {
+        this.inventory.remove(itemToRemove);
+    }
+
     /**
      * Applies damage & DoT to foe, healing to self.
      * @param stats - Array of stats to update ( 0 -> Damage, 1 -> DoT, 2 -> Healing ).
@@ -322,5 +326,11 @@ public abstract class Hero extends Entity {
      */
     private void perish(){
         System.out.println(this.name + " has perished");
+        System.out.println(" __     ______  _    _    _    _     __      ________    _____  ______ _____  _____  _____ _    _ ______ _____  \n" +
+                " \\ \\   / / __ \\| |  | |  | |  | |   /\\ \\    / /  ____|  |  __ \\|  ____|  __ \\|_   _|/ ____| |  | |  ____|  __ \\ \n" +
+                "  \\ \\_/ / |  | | |  | |  | |__| |  /  \\ \\  / /| |__     | |__) | |__  | |__) | | | | (___ | |__| | |__  | |  | |\n" +
+                "   \\   /| |  | | |  | |  |  __  | / /\\ \\ \\/ / |  __|    |  ___/|  __| |  _  /  | |  \\___ \\|  __  |  __| | |  | |\n" +
+                "    | | | |__| | |__| |  | |  | |/ ____ \\  /  | |____   | |    | |____| | \\ \\ _| |_ ____) | |  | | |____| |__| |\n" +
+                "    |_|  \\____/ \\____/   |_|  |_/_/    \\_\\/   |______|  |_|    |______|_|  \\_\\_____|_____/|_|  |_|______|_____/ ");
     }
 }

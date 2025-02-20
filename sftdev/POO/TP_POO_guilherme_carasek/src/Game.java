@@ -12,6 +12,14 @@ import java.util.Scanner;
 public class Game {
 
     public static void start(){
+        System.out.println("  _____                 _                   _     _____  _____   _____ \n" +
+                " |  __ \\               (_)                 | |   |  __ \\|  __ \\ / ____|\n" +
+                " | |__) |   _ _ __ ___  _ _ __   __ _ _ __ | |_  | |__) | |__) | |  __ \n" +
+                " |  _  / | | | '_ ` _ \\| | '_ \\ / _` | '_ \\| __| |  _  /|  ___/| | |_ |\n" +
+                " | | \\ \\ |_| | | | | | | | | | | (_| | | | | |_  | | \\ \\| |    | |__| |\n" +
+                " |_|  \\_\\__,_|_| |_| |_|_|_| |_|\\__,_|_| |_|\\__| |_|  \\_\\_|     \\_____|");
+
+
         System.out.println("You wake up. \nThe wind blows strong, heavy rain drops fall on your drenched body.");
         System.out.println("The storm has brought you to a shore, your raft destroyed.");
         System.out.println("Who are you? You try very hard to remember.");
@@ -46,14 +54,14 @@ public class Game {
             Room[] rooms = new Room[2];
             for (int i = 0; i < 2; i++){
                 Random rnd = new Random();
-                int roomSelect = rnd.nextInt(2);
+                int roomSelect = rnd.nextInt(3);
                 switch (roomSelect){
-                    case 0:
+                    case 0, 1:
                         CombatRoom combatRoom = new CombatRoom();
                         System.out.println((i+1) + ". " + combatRoom.describe());
                         rooms[i] = combatRoom;
                         break;
-                    case 1:
+                    case 2:
                         VendorRoom vendorRoom = new VendorRoom();
                         System.out.println((i+1) + ". " + vendorRoom.describe());
                         rooms[i] = vendorRoom;

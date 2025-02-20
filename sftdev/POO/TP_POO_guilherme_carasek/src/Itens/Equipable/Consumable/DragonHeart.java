@@ -14,7 +14,7 @@ public class DragonHeart extends HeroItem {
         super(step);
         this.name = "Dragon Heart";
         this.description = "Clawbone was the start of it all. He led us~more specifically, he led Dr. Harsgaard --down a path of discovery that nearly ended in our annihilation Obviously, we should never have set one foot on that path, but you try telling that to the genius who thinks they're about to change the world.";
-        this.value = 50;
+        this.value = 40;
         this.healing = 50;
         this.scale();
     }
@@ -34,12 +34,14 @@ public class DragonHeart extends HeroItem {
             while (choice != 0) {
                 System.out.println("******* " + this.name + " *******");
                 System.out.println(this.description);
+                System.out.println("Healing: " + this.healing);
                 System.out.println("1. Use");
                 System.out.println("0. Return");
                 if (in.hasNextInt()) choice = in.nextInt();
                 if (choice == 0) return true;
                 if (choice == 1){
                     hero.updateStats(new int[]{0,0,this.healing}, foe);
+                    hero.removeFromInventory(this);
                     return false;
                 }
             }
@@ -49,6 +51,46 @@ public class DragonHeart extends HeroItem {
 
     @Override
     public boolean inspect(InventoryMode mode, Hero hero) {
-        return false;
+        Scanner in = new Scanner(System.in);
+        if (mode == InventoryMode.CORRIDOR) {
+            int choice = -1;
+            while (choice != 0) {
+                System.out.println("******* " + this.name + " *******");
+                System.out.println(this.description);
+                System.out.println("Healing: " + this.healing);
+                System.out.println("1. Use");
+                System.out.println("0. Return");
+                if (in.hasNextInt()) choice = in.nextInt();
+                if (choice == 0) return true;
+                if (choice == 1){
+                    hero.updateStats(new int[]{0,0,this.healing}, null);
+                    hero.removeFromInventory(this);
+                    return true;
+                }
+            }
+        } else if (mode == InventoryMode.SHOP) {
+            int choice = -1;
+            while (choice != 0) {
+                System.out.println("******* " + this.name + " *******");
+                System.out.println(this.description);
+                System.out.println("Healing: " + this.healing);
+                System.out.println("1. Use");
+                System.out.println("2. Sell");
+                System.out.println("0. Return");
+                if (in.hasNextInt()) choice = in.nextInt();
+                if (choice == 0) return true;
+                if (choice == 1){
+                    hero.updateStats(new int[]{0,0,this.healing}, null);
+                    hero.removeFromInventory(this);
+                    return true;
+                }
+                if (choice == 2){
+                    hero.sellItem(this);
+                    return true;
+                }
+            }
+        }
+        return true;
     }
+
 }
