@@ -1,9 +1,10 @@
-package com.example.ex_05
+package com.example.ex_05.views
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ex_05.model.Aluno
 import com.example.ex_05.databinding.ActivityLoginOkBinding
 
 class LoginOkActivity : AppCompatActivity() {

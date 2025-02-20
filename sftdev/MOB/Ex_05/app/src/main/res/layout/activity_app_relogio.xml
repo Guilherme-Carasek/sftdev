@@ -6,7 +6,7 @@
     android:background="?attr/fullscreenBackgroundColor"
     android:orientation="horizontal"
     android:theme="@style/ThemeOverlay.Ex_05.FullscreenContainer"
-    tools:context=".App_Relogio">
+    tools:context=".views.App_Relogio">
 
     <TextView
         android:id="@+id/text_battery"

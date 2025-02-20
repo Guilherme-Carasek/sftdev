@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menu">
+    tools:context=".views.Menu">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -113,7 +113,7 @@
         app:layout_constraintStart_toEndOf="@+id/contacts_Button" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/butao"
+        android:id="@+id/utilizadores_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -129,8 +129,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/butao"
-        app:layout_constraintStart_toEndOf="@+id/butao" />
+        android:text="Utilizadores"
+        app:layout_constraintBottom_toBottomOf="@+id/utilizadores_button"
+        app:layout_constraintStart_toEndOf="@+id/utilizadores_button" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_Lista_Carros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/utilizadores_button"
+        app:srcCompat="@android:drawable/ic_menu_agenda" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Lista de carros"
+        app:layout_constraintBottom_toBottomOf="@+id/button_Lista_Carros"
+        app:layout_constraintStart_toEndOf="@+id/button_Lista_Carros" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

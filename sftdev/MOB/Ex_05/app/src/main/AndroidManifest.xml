@@ -13,25 +13,31 @@
         android:theme="@style/Theme.Ex_05"
         tools:targetApi="31">
         <activity
-            android:name=".App_Relogio"
+            android:name=".views.ListaUtilizadores"
+            android:exported="false" />
+        <activity
+            android:name=".views.RecyclerView"
+            android:exported="false" />
+        <activity
+            android:name=".views.App_Relogio"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_app_relogio"
             android:theme="@style/Theme.Ex_05.Fullscreen" />
         <activity
-            android:name=".blocoNotas"
+            android:name=".views.blocoNotas"
             android:exported="false" />
         <activity
-            android:name=".Menu"
+            android:name=".views.Menu"
             android:exported="false" />
         <activity
-            android:name=".Filme_favorito"
+            android:name=".views.Filme_favorito"
             android:exported="false" />
         <activity
-            android:name=".alunoView"
+            android:name=".views.alunoView"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".views.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,13 +46,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginErradoActivity"
+            android:name=".views.LoginErradoActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginOkActivity"
+            android:name=".views.LoginOkActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".views.MainActivity"
             android:exported="false" />
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.ex_05
+package com.example.ex_05.views
 
 import android.content.Intent
 import android.os.Bundle
@@ -24,6 +24,14 @@ class Menu : AppCompatActivity() {
 
         binding.contactsButton.setOnClickListener{
             startActivity(Intent(this, LoginOkActivity::class.java))
+        }
+
+        binding.utilizadoresButton.setOnClickListener{
+            startActivity(Intent(this, ListaUtilizadores::class.java))
+        }
+
+        binding.buttonListaCarros.setOnClickListener{
+            startActivity(Intent(this, RecyclerView::class.java))
         }
     }
 }

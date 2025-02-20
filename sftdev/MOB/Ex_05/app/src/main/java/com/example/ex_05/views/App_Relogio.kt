@@ -1,4 +1,4 @@
-package com.example.ex_05
+package com.example.ex_05.views
 
 import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
