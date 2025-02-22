@@ -15,7 +15,9 @@ class BandController extends Controller
     public function index()
     {
         $bands = DB::table('bands')
-        ->select('name','photo')
+        ->leftJoin('albums', 'bands.id', '=', 'albums.band_id')
+        ->select('bands.name','bands.photo', 'bands.id', DB::raw('COUNT(albums.band_id) as numberOfAlbums'))
+        ->groupBy('bands.id', 'bands.name', 'bands.photo')
         ->get();
 
         return view('bands.all_bands', compact('bands'));
