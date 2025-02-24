@@ -14,25 +14,67 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="{{route('home')}}">Home</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{route('bands.index')}}">Bands</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
+              @auth
+                @if (Auth::user()->user_type > 0)
+                        <li class="nav-item">
+                            <a class="nav-link" href=" {{route('bands.create')}} ">Add new band</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=" {{route('albums.create')}} ">Add new album</a>
+                        </li>
+                @endif
+              @endauth
             </ul>
+            @if (Route::has('login'))
+                            <nav class="-mx-3 flex flex-1 justify-end">
+                                @auth
+                                <div class="row">
+                                    <div class="col">
+                                        <a
+                                            href="{{ route('dashboard.home') }}"
+                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            Dashboard
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <form action=" {{ route('logout') }} " method="POST">
+                                            @csrf
+                                            <button class="btn btn-danger">Logout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div>
+
+                                </div>
+                                @else
+                                    <a
+                                        href="{{ route('login') }}"
+                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Log in
+                                    </a>
+
+                                    @if (Route::has('register'))
+                                        <a
+                                            href="{{ route('register') }}"
+                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            Register
+                                        </a>
+                                    @endif
+                                @endauth
+                            </nav>
+                        @endif
           </div>
         </div>
     </nav>

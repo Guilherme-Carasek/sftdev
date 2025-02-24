@@ -6,6 +6,11 @@ Bands 🎸
 
 {{-- {{ dd($bands) }} --}}
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 
     <h1>All bands</h1>
 
@@ -20,14 +25,36 @@ Bands 🎸
             <div class="col-md-8">
                 <div class="card-body">
                 <h5 class="card-title">{{ $band->name }}</h5>
-                <p class="card-text"><a href="{{ route('albums.show', $band->id) }}"><button class="btn btn-primary">
-                    @if ( $band->numberOfAlbums > 0)
-                        View {{$band->numberOfAlbums}} albums
-                    @else
-                        View band
+                <p class="card-text">
+                    <a href="{{ route('albums.show', $band->id) }}">
+                        <button class="btn btn-primary">
+                            @if ( $band->numberOfAlbums > 0)
+                                View {{$band->numberOfAlbums}} albums
+                            @else
+                                View band
+                            @endif
+                        </button>
+                    </a>
+                </p>
+                @auth
+                    <p class="card-text">
+                        <a href=" # ">
+                            <button class="btn btn-warning">
+                                Edit
+                            </button>
+                        </a>
+                    </p>
+
+                    @if (Auth::user()->user_type > 0)
+                        <p class="card-text">
+                            <a href=" {{ route('bands.delete', $band->id) }} ">
+                                <button class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </a>
+                        </p>
                     @endif
-                </button></a></p>
-                <p class="card-text"></p>
+                @endauth
                 </div>
             </div>
             </div>

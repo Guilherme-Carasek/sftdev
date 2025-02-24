@@ -21,15 +21,31 @@ Route::prefix('bands')->group(function () {
 
     Route::post('/store', [BandController::class, 'store'])->name('bands.store');
 
+    Route::get('/edit/{id}', [BandController::class, 'edit'])->name('bands.edit')->middleware('auth');
+
+    Route::post('/update/{id}', [BandController::class, 'update'])->name('bands.update')->middleware('auth');
+
+    Route::get('/delete/{id}', [BandController::class, 'destroy'])->name('bands.delete');
+
 });
 
 Route::prefix('albums')->group(function () {
 
-    Route::get('/{id}', [AlbumController::class, 'show'])->name('albums.show');
+    Route::get('/show/{id}', [AlbumController::class, 'show'])->name('albums.show');
 
     Route::get('/create', [AlbumController::class, 'create'])->name('albums.create');
 
     Route::post('/store', [AlbumController::class, 'store'])->name('albums.store');
+
+    Route::get('/delete/{id}', [AlbumController::class, 'destroy'])->name('albums.delete');
+
+
+
+});
+
+Route::prefix('dashboard')->group(function() {
+
+    Route::get('/index', function() { return view('dashboard.home_dashboard'); })->name('dashboard.home')->middleware('auth');
 
 });
 

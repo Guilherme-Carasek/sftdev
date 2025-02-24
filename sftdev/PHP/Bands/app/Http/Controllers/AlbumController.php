@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
@@ -32,7 +34,25 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string|min:3|max:36',
+            'release_date'=>'required|date',
+            'photo'=> 'image|nullable',
+            'band_id'=>'required|exists:bands,id'
+        ]);
+
+        if($request->hasFile('photo')){
+            $photo = Storage::putFile('albumPhotos', $request->photo);
+        }
+
+        Album::insert([
+            'name'=>$request->name,
+            'release_date'=>$request->release_date,
+            'photo'=>$photo,
+            'band_id'=>$request->band_id
+        ]);
+
+        return redirect()->route('albums.show', $request->band_id)->with('message', 'Succesfully added album to catalog');
     }
 
     /**
@@ -71,6 +91,10 @@ class AlbumController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('albums')
+        ->where('id', $id)
+        ->delete();
+
+        return redirect()->route('bands.index')->with('message', 'Album succesfully deleted');
     }
 }

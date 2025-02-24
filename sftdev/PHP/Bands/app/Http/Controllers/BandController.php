@@ -68,7 +68,11 @@ class BandController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $band = DB::table('bands')
+        ->where('id', $id)
+        ->first();
+
+        return view('Bands.edit_bands', compact('band'));
     }
 
     /**
@@ -76,7 +80,25 @@ class BandController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name'=>'string',
+            'photo'=>'image'
+        ]);
+
+        $photo= null;
+
+        if($request->hasFile('photo')){
+            $photo = Storage::putFile('bandPhotos', $request->photo);
+        }
+
+        DB::table('bands')
+        ->where('id', $id)
+        ->update([
+            'name'=>$request->name,
+            'photo'=> $photo
+        ]);
+
+        return redirect()->route('bands.index')->with('message', 'Band succesfully updated');
     }
 
     /**
@@ -84,7 +106,11 @@ class BandController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('bands')
+        ->where('id', $id)
+        ->delete();
+
+        return redirect()->route('bands.index')->with('message', 'Band succesfully deleted');
     }
 
     private function getBandsFromDb(){
