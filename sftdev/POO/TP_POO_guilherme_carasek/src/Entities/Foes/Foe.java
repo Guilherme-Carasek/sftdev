@@ -2,11 +2,14 @@ package Entities.Foes;
 
 import Entities.Entity;
 
+import Useful.TypeWritter;
+
+
 public abstract class Foe extends Entity {
-    private int xp;
+    protected int xp;
 
     public Foe() {
-        this.maxHp = 5;
+        this.maxHp = 8;
         this.strenght = 1;
         this.agility = 1;
         this.scrap = 1;
@@ -25,8 +28,9 @@ public abstract class Foe extends Entity {
         //int that shows how many steps occurred in a set of 20(after that, difficulty graph should reset with a bump)
         int modTwenty = step%20;
         double percent = modTwenty * 0.05;
-        //returns a difficulty graph that multiplies values by 10 at step '0', and peaks by 50x at step 18.
-        double scaleFactor = 50*(0.5*(Math.pow(2, -50 * Math.pow(percent-0.4, 4))) + 0.95*(Math.pow(2, -100 * Math.pow(percent-0.9, 2)))) * ((step/20)+1);
+        //returns a difficulty graph that multiplies values by 5 at step '0', and peaks by 25x at step 18.
+        // https://imgur.com/a/TGB0UpF
+        double scaleFactor = 25*(0.5*(Math.pow(2, -50 * Math.pow(percent-0.4, 4))) + 0.95*(Math.pow(2, -100 * Math.pow(percent-0.9, 2)))) * ((step/20)+1);
 
         this.maxHp = (int) Math.round(this.maxHp * scaleFactor);
         this.currentHp = this.maxHp;
@@ -52,7 +56,7 @@ public abstract class Foe extends Entity {
 
     public void takeDamage(int damage){
         this.currentHp -= damage;
-        System.out.print(this.name + " took " + damage + " ");
+        TypeWritter.type(this.name + " took " + damage + " ");
     }
 
 }

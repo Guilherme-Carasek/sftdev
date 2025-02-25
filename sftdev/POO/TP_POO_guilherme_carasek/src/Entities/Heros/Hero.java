@@ -7,6 +7,7 @@ import Itens.Equipable.BodyArmor.BodyArmor;
 import Itens.Equipable.Helmet.Helmet;
 import Itens.Equipable.Weapon.Weapon;
 import Itens.HeroItem;
+import Useful.TypeWritter;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -41,13 +42,13 @@ public abstract class Hero extends Entity {
     protected void allocateStats(int availableStats) {
         Scanner in = new Scanner(System.in);
         this.showStats();
-        System.out.println("You have " + availableStats + " points to allocate");
-        System.out.println("How many points would you like to add to STRENGHT?");
+        TypeWritter.type("You have " + availableStats + " points to allocate");
+        TypeWritter.type("How many points would you like to add to STRENGHT?");
         if (in.hasNextInt()){
             int pointsToAdd = in.nextInt();
             int counter = 0;
             while (pointsToAdd > availableStats || pointsToAdd < 0) {
-                System.out.println("Please enter a valid amount");
+                TypeWritter.type("Please enter a valid amount");
                 if (in.hasNextInt()) pointsToAdd = in.nextInt();
                 if (counter++ > 5) pointsToAdd = 0;
             }
@@ -56,13 +57,13 @@ public abstract class Hero extends Entity {
         }
         if(availableStats == 0) return;
         this.showStats();
-        System.out.println("You have " + availableStats + " points to allocate");
-        System.out.println("How many points would you like to add to AGILITY?");
+        TypeWritter.type("You have " + availableStats + " points to allocate");
+        TypeWritter.type("How many points would you like to add to AGILITY?");
         if (in.hasNextInt()){
             int pointsToAdd = in.nextInt();
             int counter = 0;
             while (pointsToAdd > availableStats || pointsToAdd < 0) {
-                System.out.println("Please enter a valid amount");
+                TypeWritter.type("Please enter a valid amount");
                 if (in.hasNextInt()) pointsToAdd = in.nextInt();
                 if (counter++ > 5) pointsToAdd = 0;
             }
@@ -70,7 +71,7 @@ public abstract class Hero extends Entity {
             availableStats -= pointsToAdd;
         }
         if (availableStats > 0){
-            System.out.println("You have unused stat points, they have been added to STRENGHT");
+            TypeWritter.type("You have unused stat points, they have been added to STRENGHT");
             this.strenght += availableStats;
         }
         this.showStats();
@@ -80,12 +81,12 @@ public abstract class Hero extends Entity {
      * Shows a hero's main stats (name, class, level, XPtoLevel, maxHP, STR, AGI)
      */
     public void showStats() {
-        System.out.println("******** " + this.name + " ********");
-        System.out.println("******** " + this.getClass().getSimpleName() + " ********");
-        System.out.println("Level " + this.level + "(" + this.xpToLevel + "Xp to level up)");
-        System.out.println("Max HP: " + this.maxHp);
-        System.out.println("Strength: " + this.strenght);
-        System.out.println("Agility: " + this.agility);
+        TypeWritter.type("******** " + this.name + " ********");
+        TypeWritter.type("******** " + this.getClass().getSimpleName() + " ********");
+        TypeWritter.type("Level " + this.level + "(" + this.xpToLevel + "Xp to level up)");
+        TypeWritter.type("Max HP: " + this.maxHp);
+        TypeWritter.type("Strength: " + this.strenght);
+        TypeWritter.type("Agility: " + this.agility);
     }
 
     /**
@@ -95,7 +96,7 @@ public abstract class Hero extends Entity {
     public void gainXp ( int xpGained ) {
         if ( xpGained >= this.xpToLevel ) {
             xpGained -= this.xpToLevel;
-            System.out.println(this.name + " has leveled to " + ++this.level);
+            TypeWritter.type(this.name + " has leveled to " + ++this.level);
             this.maxHp += 10; this.currentHp += 10;
             allocateStats(2);
             //determine nextlevel XP
@@ -154,6 +155,14 @@ public abstract class Hero extends Entity {
     }
 
     /**
+     * Adds a hero item to hero's inventory.
+     * @param itemToAdd
+     */
+    public void addItemToInventory(HeroItem itemToAdd){
+        this.inventory.add(itemToAdd);
+    }
+
+    /**
      * Adds item to inventory if hero has sufficient scrap. Else prints error message.
      * @param itemToBuy
      * @return
@@ -165,7 +174,7 @@ public abstract class Hero extends Entity {
             return true;
         }
         else {
-            System.out.println("Not enough scrap to buy this item!");
+            TypeWritter.type("Not enough scrap to buy this item!");
             return false;
         }
     }
@@ -191,15 +200,15 @@ public abstract class Hero extends Entity {
         int specialUses = 1;
 
         while (this.currentHp > 0 && foe.getCurrentHp() > 0){
-            System.out.println( this.name + ": " + this.currentHp + "/" + this.maxHp );
-            System.out.println( foe.getName() + ": " + foe.getCurrentHp() + "/" + foe.getMaxHp() );
+            TypeWritter.type( this.name + ": " + this.currentHp + "/" + this.maxHp );
+            TypeWritter.type( foe.getName() + ": " + foe.getCurrentHp() + "/" + foe.getMaxHp() );
             System.out.println();
 
             if (this.agility < foe.getAgility()) { //foe acts first
                 foe.countDownDot();
                 if (foe.getCurrentHp() < 1) break;
                 this.currentHp -= foe.getStrenght();
-                System.out.println(foe.getName() + " attacked for " + foe.getStrenght());
+                TypeWritter.type(foe.getName() + " attacked for " + foe.getStrenght());
             }
             //hero's turn
 
@@ -211,13 +220,13 @@ public abstract class Hero extends Entity {
 
             boolean done = false;
             while (!done){
-                System.out.println("1. Basic attack");
-                System.out.println("2. Special attack (" + specialUses + "/1)");
-                System.out.println("3. Inventory");
+                TypeWritter.type("1. Basic attack");
+                TypeWritter.type("2. Special attack (" + specialUses + "/1)");
+                TypeWritter.type("3. Inventory");
                 if (in.hasNextInt()) choice = in.nextInt();
                 switch (choice) {
                     default:
-                        System.out.println("Invalid choice");break;
+                        TypeWritter.type("Invalid choice");break;
                     case 1:
                         updateStats(this.weapon.basicAttack(), foe);
                         done = true;
@@ -226,7 +235,7 @@ public abstract class Hero extends Entity {
                         if( specialUses-- > 0 ){
                             updateStats(this.weapon.specialAttack(), foe);
                             done = true;
-                        }else System.out.println("No special uses left!");
+                        }else TypeWritter.type("No special uses left!");
                         break;
                     case 3:
                         if(!this.seeInventory(InventoryMode.BATTLE, foe)){
@@ -238,7 +247,7 @@ public abstract class Hero extends Entity {
                     foe.countDownDot();
                     if (foe.getCurrentHp() < 1) break;
                     this.currentHp -= foe.getStrenght();
-                    System.out.println(foe.getName() + " attacked for " + foe.getStrenght());
+                    TypeWritter.type(foe.getName() + " attacked for " + foe.getStrenght());
                 }
             }
         }
@@ -246,7 +255,7 @@ public abstract class Hero extends Entity {
             this.perish();
             return false;
         }
-        System.out.println("You gained " + foe.getXp() + "Xp and " + foe.getScrap() + " Scrap");
+        TypeWritter.type("You gained " + foe.getXp() + "Xp and " + foe.getScrap() + " Scrap");
         this.gainXp(foe.getXp());
         this.gainScrap(foe.getScrap());
         return true;
@@ -265,9 +274,9 @@ public abstract class Hero extends Entity {
         while (choice != -1) {
             int itemCount = 0;
             for (HeroItem itemInInventory : this.inventory) {
-                System.out.println(++itemCount + ". " + itemInInventory.getName());
+                TypeWritter.type(++itemCount + ". " + itemInInventory.getName());
             }
-            System.out.println("0. Return");
+            TypeWritter.type("0. Return");
 
             if ( in.hasNextInt() ) choice = in.nextInt() - 1;
             if (choice >= 0 && choice < this.inventory.size()){
@@ -284,9 +293,9 @@ public abstract class Hero extends Entity {
         while (choice != -1){
             int itemCount = 0;
             for (HeroItem itemInInventory : this.inventory) {
-                System.out.println(++itemCount + ". " + itemInInventory.getName());
+                TypeWritter.type(++itemCount + ". " + itemInInventory.getName());
             }
-            System.out.println("0. Return");
+            TypeWritter.type("0. Return");
 
             if (in.hasNextInt()) choice = in.nextInt() -1;
             if (choice >= 0 && choice < this.inventory.size()) {
@@ -307,7 +316,7 @@ public abstract class Hero extends Entity {
     public void updateStats (int[] stats, Foe foe){
         if (stats[0] != 0){
             foe.takeDamage(stats[0]+this.strenght);
-            System.out.println("from your attack!");
+            TypeWritter.type("from your attack!");
         }
         if (stats[1] != 0){
             foe.updateDot(stats[1]);
@@ -316,8 +325,8 @@ public abstract class Hero extends Entity {
             this.currentHp += stats[2];
             if ( this.currentHp > this.maxHp){
                 this.currentHp = this.maxHp;
-                System.out.println(this.name + " healed to full!");
-            }else System.out.println(this.name + " healed " + stats[2] + "Hp!");
+                TypeWritter.type(this.name + " healed to full!");
+            }else TypeWritter.type(this.name + " healed " + stats[2] + "Hp!");
         }
     }
 
@@ -325,8 +334,8 @@ public abstract class Hero extends Entity {
      * TODO do stuff when hero perishes ( save .txt name/level/room ? ).
      */
     private void perish(){
-        System.out.println(this.name + " has perished");
-        System.out.println(" __     ______  _    _    _    _     __      ________    _____  ______ _____  _____  _____ _    _ ______ _____  \n" +
+        TypeWritter.type(this.name + " has perished");
+        TypeWritter.type(" __     ______  _    _    _    _     __      ________    _____  ______ _____  _____  _____ _    _ ______ _____  \n" +
                 " \\ \\   / / __ \\| |  | |  | |  | |   /\\ \\    / /  ____|  |  __ \\|  ____|  __ \\|_   _|/ ____| |  | |  ____|  __ \\ \n" +
                 "  \\ \\_/ / |  | | |  | |  | |__| |  /  \\ \\  / /| |__     | |__) | |__  | |__) | | | | (___ | |__| | |__  | |  | |\n" +
                 "   \\   /| |  | | |  | |  |  __  | / /\\ \\ \\/ / |  __|    |  ___/|  __| |  _  /  | |  \\___ \\|  __  |  __| | |  | |\n" +

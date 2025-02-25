@@ -12,6 +12,7 @@ import Itens.Equipable.Weapon.CoachGun;
 import Itens.Equipable.Weapon.HuntingRifle;
 import Itens.Equipable.Weapon.Shotgun;
 import Itens.HeroItem;
+import Useful.TypeWritter;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -167,13 +168,13 @@ public class Vendor {
 
         int choice = -2;
         while (choice != -1){
-            System.out.println("You have " + hero.getScrap() + " scrap.");
+            TypeWritter.type("You have " + hero.getScrap() + " scrap.");
             int counter = 0;
             // Scanner in = new Scanner(System.in);
             for ( HeroItem itemToShow : this.stock ){
-                System.out.println(++counter + ". " + itemToShow.getName() + ": " + itemToShow.getValue() + " scrap.");
+                TypeWritter.type(++counter + ". " + itemToShow.getName() + ": " + itemToShow.getValue() + " scrap.");
             }
-            System.out.println("0. Return");
+            TypeWritter.type("0. Return");
             if (in.hasNextInt()) choice = in.nextInt() -1;
             if (choice >= 0 && choice < this.stock.size()){
                 if (hero.buyItem(this.stock.get(choice))) this.removeFromStock(this.stock.get(choice));

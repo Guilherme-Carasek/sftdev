@@ -1,0 +1,14 @@
+unnamed package
+Entities
+Entities.Foes
+Entities.Foes.RuinedEarth
+Entities.Heros
+Enums
+Itens
+Itens.Equipable
+Itens.Equipable.BodyArmor
+Itens.Equipable.Consumable
+Itens.Equipable.Helmet
+Itens.Equipable.Weapon
+Rooms
+Useful
