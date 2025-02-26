@@ -1,10 +1,18 @@
 package Views;
 
+import Controllers.CustomerController;
+import Domain.Product;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
 
 public class CustomerView {
+    private CustomerController customerController;
 
-    public CustomerView() {
+    public CustomerView() throws FileNotFoundException {
+        this.customerController = new CustomerController();
     }
 
     public void customerMenu() {
@@ -24,6 +32,10 @@ public class CustomerView {
 
             switch (menuOption) {
                 case 1: // Available Products
+                    ArrayList<Product> productsList = customerController.getAvailableProducts();
+                    for (Product product : productsList) {
+                        System.out.println(product.getName());
+                    }
                     break;
 
                 case 2: // Products by Category
