@@ -50,6 +50,7 @@ public class TreasureRoom extends Room{
         System.out.println("You take the scrap and leave");
         int scrapFound = step * 10;
         System.out.println("+" + scrapFound + " scrap");
+        hero.gainScrap(scrapFound);
         return true;
     }
 

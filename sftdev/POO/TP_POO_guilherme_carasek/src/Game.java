@@ -55,7 +55,7 @@ public class Game {
         while (isAlive){
 
             //If step == 10 its boss time!
-            if (step == 10) {
+            if (step % 10 == 0) {
                 BossRoom bossRoom = new BossRoom();
                 bossRoom.enter(hero, step++);
             }
