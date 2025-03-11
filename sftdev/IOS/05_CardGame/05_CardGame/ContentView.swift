@@ -53,6 +53,7 @@ struct ContentView: View {
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
             VStack (spacing: 50){
+				Spacer()
                 Image("logo")
                 
                 
@@ -88,18 +89,24 @@ struct ContentView: View {
                 }
                 .foregroundColor(.white)
                 
-                Button {
-                    buttonBackgroundClicked()
-                } label: {
-                    ZStack{
-                        Image(nextBackground)
-                            .resizable()
-                            .cornerRadius(50)
-                        Text("change background")
-                            .foregroundColor(.white)
-                            .font(.title)
-                    }
-                }
+				HStack{
+					Spacer()
+					Button {
+						buttonBackgroundClicked()
+					} label: {
+						ZStack{
+							Image(nextBackground)
+								.resizable()
+								.cornerRadius(50)
+							Text("change background")
+								.foregroundColor(.white)
+								.font(.title)
+						}
+					}
+					.padding(10)
+					Spacer()
+				}
+				
             }
             .padding()
         }
