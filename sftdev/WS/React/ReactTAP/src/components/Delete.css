@@ -1,0 +1,7 @@
+
+.deleteAlert{
+    background-color: rgba(165, 42, 42, 0.568) !important;
+    border-style: inset;
+    border-width: 5px;
+    border-color: brown;
+}
