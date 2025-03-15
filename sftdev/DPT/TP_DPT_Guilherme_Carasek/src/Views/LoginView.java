@@ -57,7 +57,8 @@ public class LoginView {
                 adminView.adminMenu();
                 break;
             case "ENG":
-
+                EngView engView = new EngView();
+                engView.engMenu();
                 break;
             case "ERROR":
                 System.out.println("Dados de login inválidos");

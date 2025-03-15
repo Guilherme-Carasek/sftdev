@@ -10,7 +10,7 @@ public class SalesRepository {
     ArrayList<Sale> salesList;
 
     public SalesRepository() throws FileNotFoundException {
-        this.salesList = CSVReader.readSalesFileToArray("files/Cesaeland_vendas");
+        this.salesList = CSVReader.readSalesFileToArray("files/Cesaeland_vendas.csv");
     }
 
     public ArrayList<Sale> getSalesList() {

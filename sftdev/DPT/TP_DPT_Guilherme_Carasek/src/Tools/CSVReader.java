@@ -1,6 +1,7 @@
 package Tools;
 
 import Domain.Attraction;
+import Domain.Costs;
 import Domain.Sale;
 import Domain.User;
 
@@ -25,6 +26,8 @@ public class CSVReader {
 
             usersList.add(new User(entries[0], entries[1], entries[2]));
         }
+
+        scanner.close();
         return usersList;
     }
 
@@ -48,7 +51,7 @@ public class CSVReader {
                     Integer.parseInt(entries[4]))
             );
         }
-
+        scanner.close();
         return attractionsList;
     }
 
@@ -68,7 +71,28 @@ public class CSVReader {
                     entries[2].equals("adulto")
             ));
         }
-
+        scanner.close();
         return salesList;
+    }
+
+    public static ArrayList<Costs> readCostsFileToArray (String filePath) throws FileNotFoundException {
+        ArrayList<Costs> costsList = new ArrayList<>();
+        Scanner scanner = new Scanner(new File(filePath));
+
+        scanner.nextLine();
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String[] entries = line.split(";");
+
+            costsList.add(new Costs(
+                    Integer.parseInt(entries[0]),
+                    Double.parseDouble(entries[1]),
+                    Double.parseDouble(entries[2])
+            ));
+        }
+        scanner.close();
+
+        return costsList;
     }
 }

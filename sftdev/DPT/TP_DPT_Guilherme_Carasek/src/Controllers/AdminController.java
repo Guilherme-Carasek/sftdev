@@ -4,9 +4,11 @@ import Domain.Attraction;
 import Model.AttractionsRepository;
 import Model.CostsRepository;
 import Model.SalesRepository;
+import org.w3c.dom.Attr;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AdminController {
     AttractionsRepository attractionsRepository;
@@ -38,10 +40,53 @@ public class AdminController {
         return tableValues;
     }
 
-    public Attraction getAdultsFavoriteAttraction() {
-        Attraction favoriteAttractionForAdults;
+    public HashMap<Attraction, Integer> getAdultsFavoriteAttraction() {
+        HashMap <Attraction, Integer> favoriteAttractionForAdults = new HashMap<>();
+        //logic to verify the favorite attraction and assign it to the return variable
 
         return favoriteAttractionForAdults;
     }
 
+    public HashMap<Attraction, Integer> getChilrenFavoriteAttraction() {
+        HashMap <Attraction, Integer> favoriteAttractionForChildren = new HashMap<>();
+
+        //logic to verify the favorite attraction and assign it to the return variable
+        return favoriteAttractionForChildren;
+    }
+
+    public HashMap<Attraction, Integer> getFavoriteAttraction() {
+        HashMap <Attraction, Integer> favoriteAttraction = new HashMap<>();
+        //logic to verify the favorite attraction and assign it to the return variable
+        return favoriteAttraction;
+    }
+
+    public HashMap<Attraction, Double> getMostProfitableAttraction() {
+        HashMap<Attraction, Double> mostProfitableAttraction = new HashMap<>();
+        // logic to decide the most profitable attraction and assign to the return variable
+        return mostProfitableAttraction;
+    }
+
+    public HashMap<Attraction, Double> getLeastProfitableAttraction() {
+        HashMap<Attraction, Double> leastProfitableAttraction = new HashMap<>();
+        // logic to decide the least profitable attraction and assign to the return variable, with double total profits
+        return leastProfitableAttraction;
+    }
+
+    public Attraction getBestDurationValueAttraction () {
+        double bestDurationValue = 0;
+        Attraction bestValueAttraction = new Attraction(0, "default", 0,0,0);
+
+        for (Attraction currentAttraction : this.attractionsRepository.getAttractionList()) {
+            double currentDurationValue = (currentAttraction.getDurationSeconds() / currentAttraction.getAdultPrice() );
+            if (currentDurationValue > bestDurationValue) {
+                bestDurationValue = currentDurationValue;
+                bestValueAttraction = currentAttraction;
+            }
+        }
+        return bestValueAttraction;
+    }
+
+    public void addNewLogin(String userTyper, String userName, String password) {
+        //add new user login to file
+    }
 }

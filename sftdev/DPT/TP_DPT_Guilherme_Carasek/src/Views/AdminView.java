@@ -1,6 +1,7 @@
 package Views;
 
 import Controllers.AdminController;
+import Domain.Attraction;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -28,6 +29,7 @@ public class AdminView {
             System.out.println("8. Consultar a atração menos lucrativa");
             System.out.println("9. Consultar a atração com melhor preço/tempo");
             System.out.println("10. Adicionar novo login");
+            System.out.println("0. Voltar");
 
             option = in.nextInt();
 
@@ -89,7 +91,10 @@ public class AdminView {
     private void printLeastProfitableAttraction() { }
 
     private void printBestCostBenefitAttraction() {
+        Attraction bestCostBenefitAttraction = this.adminController.getBestDurationValueAttraction();
 
+        System.out.println("A atração com maior duração por unidade de preço é a " + bestCostBenefitAttraction.getName()+":");
+        System.out.println((bestCostBenefitAttraction.getDurationSeconds() / bestCostBenefitAttraction.getAdultPrice()) + "s/€");
     }
 
     private void createNewLogin() { }
