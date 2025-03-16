@@ -33,14 +33,22 @@ public class EngController {
             }
             int ticketsBeforeNextMaintenance = Math.abs((totalTicketsSold % 50) - 50);
             if (ticketsBeforeNextMaintenance < Integer.parseInt(nextMaintenances[0][2])) {
+                //if the current maintenance gets the priority spot on the array, shifts the others to the next spots
+                nextMaintenances[2] = new String[]{nextMaintenances[1][0], nextMaintenances[1][1], nextMaintenances[1][2]};
+                nextMaintenances[1] = new String[]{nextMaintenances[0][0], nextMaintenances[0][1], nextMaintenances[0][2]};
+                // then add current maintenance to the array
                 nextMaintenances[0][0] = String.valueOf(currentAttraction.getId());
                 nextMaintenances[0][1] = currentAttraction.getName();
                 nextMaintenances[0][2] = String.valueOf(ticketsBeforeNextMaintenance);
             } else if (ticketsBeforeNextMaintenance < Integer.parseInt(nextMaintenances[1][2])) {
+                // same
+                nextMaintenances[2] = new String[]{nextMaintenances[1][0], nextMaintenances[1][1], nextMaintenances[1][2]};
+                //same
                 nextMaintenances[1][0] = String.valueOf(currentAttraction.getId());
                 nextMaintenances[1][1] = currentAttraction.getName();
                 nextMaintenances[1][2] = String.valueOf(ticketsBeforeNextMaintenance);
             } else if (ticketsBeforeNextMaintenance < Integer.parseInt(nextMaintenances[2][2])) {
+                //no need to shift positions, the last row is overwritten
                 nextMaintenances[2][0] = String.valueOf(currentAttraction.getId());
                 nextMaintenances[2][1] = currentAttraction.getName();
                 nextMaintenances[2][2] = String.valueOf(ticketsBeforeNextMaintenance);
