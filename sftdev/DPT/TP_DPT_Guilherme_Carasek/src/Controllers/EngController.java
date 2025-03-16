@@ -6,7 +6,6 @@ import Model.AttractionsRepository;
 import Model.SalesRepository;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class EngController {
@@ -21,9 +20,39 @@ public class EngController {
     public String[][] getNextMaintenances() {
         ArrayList<Attraction> attractionsList = attractionsRepository.getAttractionList();
         ArrayList<Sale> salesList = salesRepository.getSalesList();
+
+        // initialize return Array with minimum values
+        String[][] nextMaintenances = { {"0", "default", "51"}, {"0", "default", "51"}, {"0", "default", "51"} };
+
+        for (Attraction currentAttraction : attractionsList) {
+            int totalTicketsSold = 0;
+            for (Sale currentSale : salesList) {
+                if (currentSale.getAttractionId() == currentAttraction.getId()) {
+                    totalTicketsSold++;
+                }
+            }
+            int ticketsBeforeNextMaintenance = Math.abs((totalTicketsSold % 50) - 50);
+            if (ticketsBeforeNextMaintenance < Integer.parseInt(nextMaintenances[0][2])) {
+                nextMaintenances[0][0] = String.valueOf(currentAttraction.getId());
+                nextMaintenances[0][1] = currentAttraction.getName();
+                nextMaintenances[0][2] = String.valueOf(ticketsBeforeNextMaintenance);
+            } else if (ticketsBeforeNextMaintenance < Integer.parseInt(nextMaintenances[1][2])) {
+                nextMaintenances[1][0] = String.valueOf(currentAttraction.getId());
+                nextMaintenances[1][1] = currentAttraction.getName();
+                nextMaintenances[1][2] = String.valueOf(ticketsBeforeNextMaintenance);
+            } else if (ticketsBeforeNextMaintenance < Integer.parseInt(nextMaintenances[2][2])) {
+                nextMaintenances[2][0] = String.valueOf(currentAttraction.getId());
+                nextMaintenances[2][1] = currentAttraction.getName();
+                nextMaintenances[2][2] = String.valueOf(ticketsBeforeNextMaintenance);
+            }
+        }
+
+        return nextMaintenances;
     }
 
     public String[][] get3LastMaintenances() {
+        String[][] lastMaintenances = { {"0", "default", "51"}, {"0", "default", "51"}, {"0", "default", "51"} };
 
+        return lastMaintenances;
     }
 }

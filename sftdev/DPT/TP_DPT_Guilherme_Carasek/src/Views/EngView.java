@@ -29,10 +29,10 @@ public class EngView {
                     System.out.println("Opção inválida");
                     break;
                 case 1:
-
+                    printNextMaintenances();
                     break;
                 case 2:
-
+                    printMaintenanceHistory();
                     break;
                 case 0:
                     break;
@@ -40,7 +40,14 @@ public class EngView {
         } while (option != 0);
     }
 
-    public void printNextMaintenances() { }
+    public void printNextMaintenances() {
+        String[][] nextMaintenances = engController.getNextMaintenances();
+        System.out.println("Próximas 3 manutenções:");
+        System.out.println("ID da atração  |  Nome da atração  |  Bilhetes para próxima manutenção");
+        for (String[] row : nextMaintenances) {
+            System.out.println(row[0] + "  |  " + row[1] + "  |  " + row[2]);
+        }
+    }
 
     public void printMaintenanceHistory() { }
 }
