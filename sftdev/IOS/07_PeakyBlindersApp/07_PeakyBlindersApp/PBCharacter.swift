@@ -5,6 +5,9 @@
 //  Created by MultiLab PRT 15 on 17/03/2025.
 //
 
-class PBCharacter {
-	
+struct PBCharacter : Decodable, Identifiable {
+	let id : Int
+	let name : String
+	let description : String
+	let image : String
 }
