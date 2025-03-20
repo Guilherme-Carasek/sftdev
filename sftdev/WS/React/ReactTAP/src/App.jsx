@@ -11,7 +11,32 @@ import { CourseGoal } from './components/CourseGoal.jsx'
 import MyButton from './components/MyButton.jsx'
 import Discount from './components/Discount.jsx'
 import { EXAMPLES } from './data/coreConcepts.js'
+import { CORE_CONCEPTS } from './data/coreConcepts.js'
 import Delete from './components/delete.jsx'
+import ComponentsCard from './components/componentsCard.jsx'
+import { ShoppingListList } from './data/data.js'
+import HomePage from './pages/HomePage.jsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ShoppingList from './pages/ShoppingList.jsx'
+import Contacts from './pages/Contacts.jsx'
+import LayoutMaster from './components/LayoutMaster.jsx'
+import ErrorPage from './pages/Error.jsx'
+import Gifts from './pages/Gifts.jsx'
+
+
+const router = createBrowserRouter([
+  {path: '/',
+    element: <LayoutMaster/>,
+    errorElement: <ErrorPage/>,
+    children: [
+      {path: '/', element: <HomePage/>},
+      {path: '/shopping-list', element: <ShoppingList/>},
+      {path: '/contacts/:name', element: <Contacts/>},
+      {path: '/gifts', element: <Gifts/>},
+
+    ]
+  }
+])
 
 function App() {
   const [content, setContent] = useState('react')
@@ -31,6 +56,8 @@ function App() {
   function toggleDeleteAlert(isVisible) {
     setDeleteAlert(isVisible)
   }
+
+  return <RouterProvider router={router} />
   
   
   return (
@@ -51,10 +78,10 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <MyButton onSelect={()=>{handleSelect('javaScript')}}>JavaScript</MyButton>
-      <MyButton onSelect={()=>{handleSelect('Java')}}>Java</MyButton>
-      <MyButton onSelect={()=>{handleSelect('php')}}>php</MyButton>
-      <MyButton children={"SQL"} onSelect={()=>handleSelect('SQL')}></MyButton>
+      <MyButton active={content == 'javaScript'} onSelect={()=>{handleSelect('javaScript')}}>JavaScript</MyButton>
+      <MyButton active={content == 'Java'} onSelect={()=>{handleSelect('Java')}}>Java</MyButton>
+      <MyButton active={content == 'php'} onSelect={()=>{handleSelect('php')}}>php</MyButton>
+      <MyButton active={content == 'SQL'} children={"SQL"} onSelect={()=>handleSelect('SQL')}></MyButton>
       <h1>Sofware Developer: {content}</h1>
       <Card
         {...UserData}
@@ -64,6 +91,14 @@ function App() {
         lastName = "arujko"
         title = "rica"
       />
+
+      <div>
+        {CORE_CONCEPTS.map((item) => 
+            <ComponentsCard key={item.title} {...item} />
+        )}
+      </div>
+      <ComponentsCard title="test" description="tstststst" />
+
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
@@ -85,6 +120,14 @@ function App() {
           <p>{EXAMPLES[concepts].code}</p>
         </div>
       )}
+
+      <div>
+        <h3>Lista de Compras</h3>
+        <ul>
+        {ShoppingList.map((item)=> 
+          <li key={item.name}>{item.name} - {item.amount}</li>
+        )}
+      </ul></div>
     </>
   )
 

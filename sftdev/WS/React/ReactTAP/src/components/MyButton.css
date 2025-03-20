@@ -1,4 +1,11 @@
+.myBtn{
+    margin-inline: 0.3rem;
+}
+
 .btnColor{
     background-color: brown;
-    margin-inline: 0.3rem;
+}
+
+.btnActive{
+    background-color: rgb(117, 7, 7);
 }

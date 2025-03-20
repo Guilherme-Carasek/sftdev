@@ -1,0 +1,25 @@
+button{
+    background-color: grey;
+}
+
+
+.giftCardUnselected{
+    background-color: blueviolet;
+}
+
+.giftCardSelected{
+    background-color: rgb(181, 114, 243);
+    button{
+        background-color: rgb(73, 68, 68);
+    }
+}
+
+.giftCard{
+    padding: 2rem;
+    width: 400px;
+}
+
+.giftContainer{
+    display:flex;
+    flex-direction:row;
+}
