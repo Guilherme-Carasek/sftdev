@@ -1,0 +1,58 @@
+[
+    {   "gifter" : "Filipa",
+        "gifts" : [
+            {
+                "recipient" : "Mãe",
+                "gift" : "Perfume",
+                "price": "40€"
+            },
+            {
+                "recipient" : "Guilherme",
+                "gift" : "Kawasaki Ninja 500SE performance",
+                "price": "8.450€"
+            }
+        ]
+    },
+    {   "gifter" : "Andreia" ,
+        "gifts" : [
+            {
+                "recipient" : "Filipa",
+                "gift" : "Perfume",
+                "price": "40€"
+            },
+            {
+                "recipient" : "Guilherme",
+                "gift" : "Coca-cola",
+                "price": "1,30€"
+            }
+        ]
+    },
+    {   "gifter" : "Luís" ,
+        "gifts" : [
+            {
+                "recipient" : "Filipa",
+                "gift" : "Bala 7 Belo",
+                "price": "R$0,25"
+            },
+            {
+                "recipient" : "Guilherme",
+                "gift" : "Croissant Avelã",
+                "price": "1,30€"
+            }
+        ]
+    },
+    {   "gifter" : "TT" ,
+        "gifts" : [
+            {
+                "recipient" : "Filipa",
+                "gift" : "KFC",
+                "price": "$3,00"
+            },
+            {
+                "recipient" : "Guilherme",
+                "gift" : "Pneu Pirelli",
+                "price": "63,90€"
+            }
+        ]
+    }
+]

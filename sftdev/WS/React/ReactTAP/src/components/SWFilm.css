@@ -1,0 +1,7 @@
+
+.openingCrawl:hover{
+    color: yellow;
+    font-size: 60px;
+    transform: translateY(-2500px);
+    transition: transform 15s;
+}

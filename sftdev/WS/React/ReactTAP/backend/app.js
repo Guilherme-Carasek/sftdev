@@ -38,6 +38,12 @@ app.put("/user-places", async (req, res) => {
   res.status(200).json({ message: "User places updated!" });
 });
 
+app.get("/gifts", async (req, res) => {
+  const fileContent = await fs.readFile("./data/gifts.json");
+  const giftsData = JSON.parse(fileContent);
+  res.status(200).json({ gifts: giftsData });
+});
+
 //rotas de users
 //rota de registo
 app.post("/signup", async (req, res) => {

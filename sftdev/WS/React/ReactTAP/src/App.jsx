@@ -22,6 +22,9 @@ import Contacts from './pages/Contacts.jsx'
 import LayoutMaster from './components/LayoutMaster.jsx'
 import ErrorPage from './pages/Error.jsx'
 import Gifts from './pages/Gifts.jsx'
+import AvailablePlaces from './pages/PlacesIndex.jsx'
+import Places from './components/places/Places.jsx'
+import MoviesIndex from './pages/SWMovies.jsx'
 
 
 const router = createBrowserRouter([
@@ -33,6 +36,8 @@ const router = createBrowserRouter([
       {path: '/shopping-list', element: <ShoppingList/>},
       {path: '/contacts/:name', element: <Contacts/>},
       {path: '/gifts', element: <Gifts/>},
+      {path: '/places', element: <AvailablePlaces/>},
+      {path: '/swmovies', element: <MoviesIndex/>},
 
     ]
   }
