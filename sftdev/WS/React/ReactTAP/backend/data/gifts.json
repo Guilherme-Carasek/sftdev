@@ -54,5 +54,19 @@
                 "price": "63,90€"
             }
         ]
+    },
+    {   "gifter" : "rubsn" ,
+        "gifts" : [
+            {
+                "recipient" : "Filipa",
+                "gift" : "KING CHICKEN",
+                "price": "€9,00"
+            },
+            {
+                "recipient" : "Guilherme",
+                "gift" : "Pneu Pirelli (frente)",
+                "price": "43,90€"
+            }
+        ]
     }
 ]
