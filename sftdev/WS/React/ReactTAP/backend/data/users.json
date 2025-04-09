@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "email": "admin@msft.cesae.pt",
+    "password": "123",
+    "firstName": "1234",
+    "lastName": "1234",
+    "role": "student",
+    "termsAccepted": true
+  },
+  {
+    "email": "admin@msft.cesae.pt",
+    "password": "123",
+    "firstName": "1234",
+    "lastName": "1234",
+    "role": "student",
+    "termsAccepted": true
+  },
+  {
+    "email": "admin@msft.cesae.pt",
+    "password": "123",
+    "firstName": "1234",
+    "lastName": "1234",
+    "role": "student",
+    "termsAccepted": true
+  },
+  {
+    "email": "admin@msft.cesae.pt",
+    "password": "123",
+    "firstName": "1234",
+    "lastName": "1234",
+    "role": "student",
+    "termsAccepted": true
+  },
+  {
+    "email": "admin@msft.cesae.pt",
+    "password": "123",
+    "firstName": "1234",
+    "lastName": "1234",
+    "role": "student",
+    "termsAccepted": true
+  },
+  {
+    "email": "guilherme@email.com",
+    "password": "1234",
+    "firstName": "guui",
+    "lastName": "lhern",
+    "role": "student",
+    "termsAccepted": true
+  }
+]

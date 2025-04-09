@@ -25,6 +25,8 @@ import Gifts from './pages/Gifts.jsx'
 import AvailablePlaces from './pages/PlacesIndex.jsx'
 import Places from './components/places/Places.jsx'
 import MoviesIndex from './pages/SWMovies.jsx'
+import Login from './pages/login.jsx'
+import Signup from './pages/Register.jsx'
 
 
 const router = createBrowserRouter([
@@ -38,6 +40,8 @@ const router = createBrowserRouter([
       {path: '/gifts', element: <Gifts/>},
       {path: '/places', element: <AvailablePlaces/>},
       {path: '/swmovies', element: <MoviesIndex/>},
+      {path: '/login', element: <Login/>},
+      {path: '/register', element: <Signup/>},
 
     ]
   }
