@@ -19,6 +19,7 @@ public class AdminController {
         this.attractionsRepository = new AttractionsRepository(attractionsFilePath);
         this.salesRepository = new SalesRepository(salesFilePath);
         this.costsRepository = new CostsRepository(costsFilePath);
+
     }
 
     public double getSalesTotal() {
