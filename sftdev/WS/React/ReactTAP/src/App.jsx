@@ -27,6 +27,7 @@ import Places from './components/places/Places.jsx'
 import MoviesIndex from './pages/SWMovies.jsx'
 import Login from './pages/login.jsx'
 import Signup from './pages/Register.jsx'
+import { AuthProvider } from './contexts/AuthContext.jsx'
 
 
 const router = createBrowserRouter([
@@ -48,13 +49,20 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  const [content, setContent] = useState('react')
+return (
+  <AuthProvider>
+    <RouterProvider router = {router}/>
+  </AuthProvider>
+);
+
+
+  /* const [content, setContent] = useState('react')
   const [concepts, setConcepts] = useState()
   const [deleteAlert, setDeleteAlert] = useState(false)
 
   /* let content = "React" */
 
-  function handleSelect(selectedBtn) {
+  /* function handleSelect(selectedBtn) {
     setContent(selectedBtn)
   }
 
@@ -64,12 +72,12 @@ function App() {
 
   function toggleDeleteAlert(isVisible) {
     setDeleteAlert(isVisible)
-  }
+  } */
 
-  return <RouterProvider router={router} />
+  /* return <RouterProvider router={router} /> */
   
   
-  return (
+  /* return (
     <>
       <div>
           {deleteAlert ? ( 
@@ -79,7 +87,7 @@ function App() {
           <button onClick={()=>toggleDeleteAlert(true)}>Deletar tudo</button>
 
         <Header/>
-        {/* <MainGoal myGoal= {MyGoal}/> */}
+        { <MainGoal myGoal= {MyGoal}/> }
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -138,8 +146,8 @@ function App() {
         )}
       </ul></div>
     </>
-  )
-
+  ) */
+ 
 
 }
 

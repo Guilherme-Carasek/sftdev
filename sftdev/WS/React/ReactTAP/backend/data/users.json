@@ -46,5 +46,13 @@
     "lastName": "lhern",
     "role": "student",
     "termsAccepted": true
+  },
+  {
+    "email": "teacher@teacher",
+    "password": "teacher",
+    "firstName": "teacher",
+    "lastName": "teacher",
+    "role": "teacher",
+    "termsAccepted": true
   }
 ]

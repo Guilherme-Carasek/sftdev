@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import ShoppingList from "./ShoppingList"
 import { Link, useLocation } from "react-router-dom"
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function HomePage() {
 
+    const {user, login, logout} = useContext(AuthContext)
     const location = useLocation()
     const message = location.state?.message;
-
+    console.log(user)
     return <div>
         {message && <div>{message}</div>}
         <h1> As minhas funcionalidades </h1>
